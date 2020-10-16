@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# OBS.: This is experimental
+
+
+
 BSPC_FUNCTIONS_LIB=~/.local/lib/bspc_layout_functions
 BSPC_LAYOUTS_PATH=~/.config/bspwm/layouts
 BSPC_LAYOUTS_VAR=~/.local/var/bspc_layout_var
+
+
 
 case $1 in
 	ls | list )
