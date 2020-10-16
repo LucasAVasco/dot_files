@@ -1,0 +1,102 @@
+############ Applications ##############
+
+# Open the terminal
+super + Return
+	alacritty &
+
+ctrl + alt + t
+	alacritty &
+
+# Rofi windows
+alt + F2
+	rofi -show window &
+
+# Rofi Applications
+alt + F3
+	rofi -show drun &
+
+# Xfce4 Appfinder
+alt + F4
+	xfce4-appfinder &
+
+# Thunar
+super + t
+	thunar &
+
+
+
+############## Window ##################
+
+# Close the window
+super + c
+	bspc node -c
+
+# Set the node's state
+super + alt + {1-4}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Set the node's flag
+super + alt + {5-9}
+	bspc node -g {sticky,private,locked,marked=on,marked=off}
+
+# Move the window to another desktop
+super + alt + F{1-9}
+	bspc node -d {I,II,III,IV,V,VI,VII,VIII,IX} --follow
+
+# Change the focused node
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# Resize the window
+super + b ; ctrl + {h,j}
+	bspc node -z {left,bottom} -10 10
+
+super + b ; ctrl + {k,l}
+	bspc node -z {top,right} 10 -10
+
+super + b ; alt + {h,j}
+	bspc node -z {left,bottom} -100 100
+
+super + b ; alt + {k,l}
+	bspc node -z {top,right} 100 -100
+
+# Manual layout
+super + ctrl + {h,j,k,l,g}
+	bspc node -p {west,south,north,east,cancel}
+
+# Change nodes position
+super + alt + {h,j,k,l}
+	bspc node -s {west,south,north,east} --follow
+
+
+
+############# Desktop ##################
+
+# Change to another desktop
+super + F{1-9}
+	bspc desktop -f {I,II,III,IV,V,VI,VII,VIII,IX}
+
+# Flip desktop
+super + b ; {x,y}
+	bspc node $(bspc query -N -d | sed -n '1p') -F {horizontal,vertical}
+
+# Refresh desktop
+ctrl + alt + u
+	bspc-layout refresh
+
+
+
+############## System ##################
+
+# Reload the sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
+
+
+# Quit and reboot sxhkd
+shift + alt + {q,r}
+	bspc {quit,wm -r}
+
+# suspend, reboot and poweroff
+super + ctrl + alt + {s,r,q}
+	sudo systemctl {suspend,reboot,poweroff}

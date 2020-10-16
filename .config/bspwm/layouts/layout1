@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# OBS.: This is experimental
+
+
+
+LAYOUT_CHANGE()
+{
+	LAYOUT_REFRESH
+
+	bspc node `RETURN_NLEAFS 1` -r 0.4
+
+}
+
+
+LAYOUT_REFRESH()
+{
+	UPDATE_NODES
+
+	SET_SPLIT_TYPE `RETURN_NLEAFS 1` vertical
+
+	bspc node `RETURN_NLEAFS 2` -B
+
+	for loop in $(echo $ALL_NLEAFS | cut -d' ' -f2-); do
+		SET_SPLIT_TYPE $loop horizontal
+	done
+}

@@ -1,0 +1,98 @@
+#!/bin/bash
+
+# OBS.: This is experimental. Yopu need to delete the '~/Desktop' directory
+
+
+set -e
+
+DESKDIR="$HOME/.Desktops"
+
+
+# Show error message
+HELPCHDESK () {
+	echo -e '\nusage: chdesk command\n'
+	echo -e 'Commands:\n'
+
+	echo 'list | ls - lists the avaliable desktops'
+	echo 'help - show this mensage'
+	echo 'add | make <name> - create a new desktop with the label name'
+	echo 'dell | rm | remove <name> - telete a desktop "name"'
+	echo 'change <name> - change to the desktop with the label <name>';
+}
+
+
+# Check the parameters number
+NUMBERERROR () {
+	if [[ "$1" != "$2" ]]; then
+		exec echo -e "\nERROR! There are not a correct number of parameters.\n"
+	fi
+}
+
+
+case $1 in
+
+	# List all "Desktops"
+	list | ls ) 	NUMBERERROR $# 1
+		ls "$DESKDIR"
+		declare -i VALOR=$(ls -l ~/Desktop | fgrep -o '/' | wc -l)
+		VALOR=${VALOR}+1
+
+		echo -e "\nActive: `ls -l ~/Desktop | cut -d'/' -f${VALOR}`";;
+
+
+	# Create a new "Desktop"
+	add | make ) 	NUMBERERROR $# 2
+		for loop in $(ls "${DESKDIR}"); do
+			if [[ $loop == $2 ]]; then
+				exec echo -e '\nThis Desktop already exists! Choose other name.\n'
+			fi
+		done
+		mkdir -p "${DESKDIR}/$2";;
+
+
+	# Copy a existing "Desktop"
+	cp | copy )	NUMBERERROR $# 3
+		cp -r "${DESKDIR}/$2"  "${DESKDIR}/$3";;
+
+
+	# Remove a existing "Desktop"
+	rm | remove | dell )	NUMBERERROR $# 2
+		rm -r "${DESKDIR}/$2";;
+
+
+	# Change to the "Desktop"
+	change )	NUMBERERROR $# 2
+		var1='no'
+		for loop in $(ls $DESKDIR); do
+			if [[ $2 == $loop ]]; then
+				var1='yes'
+			fi
+		done
+
+		if [[ $var1 == 'no' ]]; then
+			exec echo -e "\nThere aren't this desktop\n"
+		fi
+
+		ln -dsfT "${DESKDIR}/$2" ~/Desktop
+		
+		if [ "1$XDG_CURRENT_DESKTOP" == '1XFCE' ]; then
+			xfdesktop -Q
+			xfdesktop -R &
+		fi
+		;;
+
+
+	# Show HELP message
+	help | h | --help ) NUMBERERROR $# 1
+		HELPCHDESK;;
+
+
+	# If there is no compatible opition
+	* ) 	echo -e "\nThere aren't this opition\n";;
+
+	esac
+
+
+# Unset variables
+unset DESKDIR
+unset HELPCHDESK

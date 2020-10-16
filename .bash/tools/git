@@ -1,0 +1,44 @@
+#!/bin/bash
+
+########## GIT TOOLS FOR BASH ##########
+
+# Make to be usaed with Bash
+
+
+
+# Declare git info variables
+local -i UNTRACKED=0
+local -i STAGED=0
+local -i MODIFIED=0
+local -i MODIFIED_STAGED=0
+local -i DELETED=0
+local -i DELETED_STAGED=0
+local -i STASHED_ENTRIES=0
+
+# Update the number os archives
+if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
+	for ((loop=1;loop<=`git status -s | wc -l`; loop++))
+	{
+		LINE=$(git status -s | sed -n "${loop}p")
+
+		CHAR_0=${LINE:0:1}
+		CHAR_1=${LINE:1:1}
+
+		# Staged Archives
+		case "_$CHAR_0" in
+			'_A' ) STAGED+=1;;
+			'_M' ) MODIFIED_STAGED+=1;;
+			'_D' ) DELETED_STAGED+=1;;
+		esac
+
+		# Not Staged Archives
+		case "_$CHAR_1" in
+			'_?' ) UNTRACKED+=1;;
+			'_M' ) MODIFIED+=1;;
+			'_D' ) DELETED+=1;;
+		esac
+
+	}
+
+	STASHED_ENTRIES=$(git stash list | wc -l)
+fi

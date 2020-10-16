@@ -1,0 +1,37 @@
+# Remove Backup files
+*~
+
+
+# Exclude all archives and directories
+/*
+
+
+# Accept some directories
+!/.bash
+!/.tmux
+
+
+# Accept recursive directories
+!/.config
+!/.local
+
+/.config/*
+/.local/*
+
+
+!/.config/bspwm
+!/.config/alacritty
+!/.config/nvim
+!/.config/polybar
+!/.config/sxhkd
+!/.config/rofi
+
+!/.local/bin
+!/.local/lib
+
+
+# Accept some archives
+!/.bashrc
+!/.tmux.conf
+!/.vimrc
+!/.gitignore

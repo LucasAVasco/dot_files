@@ -1,0 +1,30 @@
+# .CONFIG/ALACRATTY/ALACRATTY.TML
+
+
+window:
+  dimensions:
+    columns: 70
+    lines: 20
+
+font:
+  normal:
+          family: Hack Nerd Font Mono
+  size: 10
+
+colors:
+  normal:
+    black:   '#000000'
+    red:     '#FF0505'
+    green:   '#24FF05'
+    yellow:  '#FFFE05'
+    blue:    '#0524FF'
+    magenta: '#FF0580'
+    cyan:    '#05FFEE'
+    white:   '#ffffff'
+
+bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: '#ffffff'
+
+background_opacity: 0.8

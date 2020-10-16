@@ -1,0 +1,29 @@
+#!/bin/bash
+
+BSPC_FUNCTIONS_LIB=~/.local/lib/bspc_layout_functions
+BSPC_LAYOUTS_PATH=~/.config/bspwm/layouts
+BSPC_LAYOUTS_VAR=~/.local/var/bspc_layout_var
+
+case $1 in
+	ls | list )
+		ls $BSPC_LAYOUTS_PATH;;
+
+	change )
+		HAVE_LAYOUT='false'
+		for loop in ls $BSPC_LAYOUTS_PATH; do
+			if [ $2 != $loop ]; then
+				HAVE_LAYOUT='true'
+			fi
+		done
+		if [ $HAVE_LAYOUT == 'true' ]; then
+			source $BSPC_FUNCTIONS_LIB
+			source ${BSPC_LAYOUTS_PATH}/$2
+			echo "$2" > $BSPC_LAYOUTS_VAR
+			LAYOUT_CHANGE
+		fi;;
+
+	refresh )
+		source $BSPC_FUNCTIONS_LIB
+		source ${BSPC_LAYOUTS_PATH}/$(cat $BSPC_LAYOUTS_VAR)
+		LAYOUT_REFRESH;;
+esac

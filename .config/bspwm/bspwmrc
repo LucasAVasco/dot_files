@@ -1,0 +1,39 @@
+#! /bin/sh
+
+sxhkd &
+compton &
+nitrogen --restore &
+pulseaudio --start &
+polybar topbar &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+bspc monitor -d I II III IV V VI VII VIII IX
+
+bspc config border_width         1
+bspc config window_gap           12
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config normal_border_color  '#383838'
+bspc config focused_border_color '#5CDBFF'
+
+bspc config border_width 	 2
+bspc config window_gap 		 7
+
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+
+
+DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
+DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
+
+for loop in 'Gufw.py' 'Nm-connection-editor' 'Thunar' 'Nm-connection-editor' 'Thunar' 'File-roller' 'Gpick' 'processing-app-Base' 'Pdfarranger'; do
+	bspc rule -a $loop state=floating;
+done
+
+bspc rule -a Pavucontrol state=floating rectangle=700x400
+bspc rule -a Xfce4-appfinder state=floating rectangle=400x480+`python -c "print($DISP_WIDTH/2 - 200)"`+`python -c "print($DISP_HEIGHT/2 - 240)"`

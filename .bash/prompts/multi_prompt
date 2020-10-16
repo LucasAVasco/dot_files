@@ -1,0 +1,150 @@
+#!/bin/bash
+
+############ EDGE PROMPT ############
+
+# Make to be usaed with Bash
+
+
+
+# Prompt commander number
+declare -i PROMPT_COMMAND_NUMBER=0
+
+# Generate PS1 Variable
+PROMPT_COMMAND='PROMPT_REFRESH $?'
+
+
+
+# Update git prompt tool
+UPDATE_GIT_PROMPT_TOOL()
+{
+	# Include GIT TOOLS FOR BASH
+	source $HOME'/.bash/tools/git'
+
+	if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
+		echo "…$UNTRACKED +$MODIFIED ×$DELETED  •$STAGED ➤+$MODIFIED_STAGED ➤×$DELETED_STAGED  ⚑ $STASHED_ENTRIES "
+	else
+		echo '✔ '
+	fi
+}
+
+
+# Update prompt
+PROMPT_REFRESH()
+{
+	# Variables
+	local MAIN_PROMPT
+	local RIGHT_PROMPT
+	local WORKING_DIRECTORY
+	local ERROR_PROMPT
+	local END_PROMPT
+
+	local PROMPT_INFO_1
+	local PROMPT_INFO_2
+	local PROMPT_INFO_3
+
+	local SPACES_NUMBER=''
+
+
+	# Main prompt
+	MAIN_PROMPT='\
+\[\033[38;5;${CHAR_COLOR_1}m\]\[\033[48;5;${BACK_COLOR_1}m\] \
+\[\033[38;5;${CHAR_COLOR_2}m\] \s \
+\[\033[38;5;${BACK_COLOR_1}m\]\[\033[48;5;${BACK_COLOR_2}m\]\
+\[\033[38;5;${CHAR_COLOR_3}m\] \u \
+\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_2}m\]'
+
+
+	# WORKING_DIRECTORY and ERROR_PROMPT
+	if [ "$1" != 0 ]; then
+		WORKING_DIRECTORY='\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_ERROR}m\]\[\033[48;5;${BACK_COLOR_ERROR}m\]\[\033[38;5;${CHAR_COLOR_ERROR}m\] \w \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_ERROR}m\]\[$(tput sgr0)\]'
+
+		ERROR_PROMPT='\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_ERROR}m\]Error Code: '${1}'\[$(tput sgr0)\]\n'
+	else
+		WORKING_DIRECTORY=' \[$(tput sgr0)\]\[\033[38;5;${CHAR_COLOR_4}m\]\w'
+
+		ERROR_PROMPT=''
+	fi
+
+
+	# Right Floating Prompt
+	PROMPT_COMMAND_NUMBER+=1
+	local -i REPETITIONS=${COLUMNS}-$(echo ${PROMPT_COMMAND_NUMBER} | wc -c)-18
+
+	for (( loop1=0; loop1<${REPETITIONS}; loop1++ )); do
+		SPACES_NUMBER+=" "
+	done
+
+	RIGHT_PROMPT='\
+\[$(tput sgr0)\]'\
+"${SPACES_NUMBER}"'\
+\[\033[38;5;${BACK_COLOR_3}m\]\
+\[\033[48;5;${BACK_COLOR_3}m\]\[\033[38;5;${CHAR_COLOR_5}m\] \j \
+\[\033[38;5;${BACK_COLOR_4}m\]\[\033[48;5;${BACK_COLOR_4}m\]\
+\[\033[38;5;${CHAR_COLOR_6}m\] ${PROMPT_COMMAND_NUMBER} \
+\[\033[38;5;${BACK_COLOR_5}m\]\[\033[48;5;${BACK_COLOR_5}m\] \
+\[\033[38;5;${CHAR_COLOR_7}m\] \@ \
+\[$(tput sgr0)\]'
+
+
+	# Git tool prompts
+	git branch 2> '/dev/null' > '/dev/null' &&
+	{
+		# Make the git integration prompt
+		PROMPT_INFO_1=" $(git status -sb | sed -n '1p' | cut -d' ' -f2- | cut -d'.' -f1)"
+		PROMPT_INFO_2="`UPDATE_GIT_PROMPT_TOOL`"
+
+
+		# Format the prompt
+		PROMPT_INFO_1=\
+' \[\033[38;5;${BACK_COLOR_GIT}m\]\[\033[38;5;${CHAR_COLOR_GIT}m\]\[\033[48;5;${BACK_COLOR_GIT}m\] '\
+"$PROMPT_INFO_1"\
+' \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_GIT}m\]\[$(tput sgr0)\]'
+
+		PROMPT_INFO_2=\
+'   \[\033[38;5;${BACK_COLOR_GIT}m\]\[\033[38;5;${CHAR_COLOR_GIT}m\]\[\033[48;5;${BACK_COLOR_GIT}m\] '\
+"$PROMPT_INFO_2"\
+' \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_GIT}m\]\[$(tput sgr0)\]'
+
+
+		# Change the git integration tools colors
+		if [ "$(git status -s)" != '' -o "$(git stash list)" != "" ]; then
+			BACK_COLOR_GIT=$BACK_COLOR_GIT_UNDONE
+			CHAR_COLOR_GIT=$CHAR_COLOR_GIT_UNDONE
+		else
+			PROMPT_INFO_2=''
+			BACK_COLOR_GIT=$BACK_COLOR_GIT_DONE
+			CHAR_COLOR_GIT=$CHAR_COLOR_GIT_DONE
+		fi
+	} ||
+	{
+		PROMPT_INFO_1=''
+		PROMPT_INFO_2=''
+	}
+
+
+# End Prompt
+	END_PROMPT='\
+\[\033[48;5;${BACK_COLOR_6}m\] \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_6}m\]\
+\[$(tput sgr0)\]\[\033[38;5;${CHAR_COLOR_8}m\] \$:  \
+\[$(tput sgr0)\]\
+'
+
+# Export final Prompt
+	export PS1="\
+\n\n${RIGHT_PROMPT}\r\
+${MAIN_PROMPT}  \
+${WORKING_DIRECTORY}  \
+${PROMPT_INFO_1}\
+${PROMPT_INFO_2}\
+\n\
+${ERROR_PROMPT}\
+\n\
+${END_PROMPT}\
+${TEXT_COLOR}"
+}
+
+
+# Another prompt Variables
+export PS2="\[\033[48;5;${BACK_COLOR_6}m\]  \[$(tput sgr0)\]    "
+
+export PS4="\[\033[48;5;${BACK_COLOR_6}m\]  \[$(tput sgr0)\]    "

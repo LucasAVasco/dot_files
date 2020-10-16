@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# OBS.: This is experimental
+
+
+# List functions
+LIST_NODES()
+{
+	bspc query -N -d
+}
+
+LIST_LEAFS()
+{
+	bspc node -f next.!leaf
+	ACTUAL_NODE=$(bspc query -N -n)
+	NEW_NODE=0
+	while [ $ACTUAL_NODE != $NEW_NODE ]; do
+		bspc node -f next.local
+		#sleep 1 # Unomment this line to debug
+		NEW_NODE=$(bspc query -N -n)
+		echo $NEW_NODE
+	done
+}
+
+
+
+# $1 need to be $(LIST_LEAFS)
+LIST_NLEAFS()
+{
+	for loop1 in `LIST_NODES`; do
+		VALUE='false'
+		for loop2 in $@; do
+			if [ $loop1 == $loop2 ]; then
+				VALUE='true'
+			fi
+		done
+		if [ $VALUE == 'false' ]; then
+			echo $loop1
+		fi
+	done
+}
+
+
+
+# Variables
+declare ALL_NODES
+declare ALL_LEAFS
+declare ALL_NLEAFS
+declare -i NODES_NUMBER
+declare -i LEAFS_NUMBER
+declare -i NLEAFS_NUMBER
+
+
+
+# Number functions
+NODES_COUNT()
+{
+	echo $ALL_NODES  | wc -w
+}
+
+LEAFS_COUNT()
+{
+	echo $ALL_LEAFS  | wc -w
+}
+
+NLEAFS_COUNT()
+{
+	echo $ALL_NLEAFS | wc -w
+}
+
+
+
+# Update values
+UPDATE_NODES()
+{
+	ALL_NODES=`LIST_NODES`
+	ALL_LEAFS=`LIST_LEAFS`
+	ALL_NLEAFS=`LIST_NLEAFS "$ALL_LEAFS"`
+	NODES_NUMBER=$(NODES_COUNT)
+	LEAFS_NUMBER=$(LEAFS_COUNT)
+	NLEAFS_NUMBER=$(NLEAFS_COUNT)
+}
+
+
+
+# Return functions
+RETURN_NODE()
+{
+	echo $ALL_NODES  | cut -d' ' -f$1
+}
+
+RETURN_LEAFS()
+{
+	echo $ALL_LEAFS  | cut -d' ' -f$1
+}
+
+RETURN_NLEAFS()
+{
+	echo $ALL_NLEAFS | cut -d' ' -f$1
+}
+
+
+# Info functions
+NODE_TREE()
+{
+	bspc node -f $1
+	bspc query -T -n
+	bspc node -f last
+}
+
+NODE_INFO()
+{
+	case $2 in
+		splitType )
+			NODE_TREE $1 | sed -e 's/,/\n/g' | awk '/splitType/' | cut -d'"' -f4 | sed -n '1p';;
+
+		splitRatio )
+			NODE_TREE $1 | sed -e 's/,/\n/g' | awk '/splitRatio/' | cut -d: -f2 sed -n '1p';;
+
+		birthRotation)
+			NODE_TREE $1 | sed -e 's/,/\n/g' | awk '/birthRotation/' | cut -d: -f2 sed -n '1p';;
+	esac
+}
+
+SET_SPLIT_TYPE()
+{
+	if [ $2 != 'horizontal' -a $2 != 'vertical' ]; then
+		echo -e "Invalid SPLIT_TYPE"
+	elif [ $(NODE_INFO $1 splitType) != $2 ]; then
+		bspc node $1 -R 90
+	fi
+}
