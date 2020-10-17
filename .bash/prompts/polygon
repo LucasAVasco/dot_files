@@ -43,9 +43,14 @@ PROMPT_REFRESH()
 		CHAR_COLOR_3=$CHAR_COLOR_SUCCESS
 	fi
 
-	# Change the git tool colors
-	git branch 2> '/dev/null' > '/dev/null' &&
+
+	EXPORT_INFO_BG=''
+	EXPORT_INFO_TEXT=''
+
+	# Git tool prompt
+	ls '.git/' 2> '/dev/null' > '/dev/null' &&
 	{
+		# Git prompt colors
 		if [ "_$(git status -s)" != '_' -o "_$(git stash list)" != "_" ]; then
 			BACK_COLOR_4=$BACK_COLOR_GIT
 			CHAR_COLOR_4=$CHAR_COLOR_GIT
@@ -53,24 +58,14 @@ PROMPT_REFRESH()
 			BACK_COLOR_4=$BACK_COLOR_STAGED
 			CHAR_COLOR_4=$CHAR_COLOR_STAGED
 		fi
-	}
 
-
-	# If has prompt info
-	git branch 2> '/dev/null' > '/dev/null' && HAS_PROMPT_INFO=1 || HAS_PROMPT_INFO=0
-
-	EXPORT_INFO_BG=''
-	EXPORT_INFO_TEXT=''
-
-	if [ $HAS_PROMPT_INFO = 1 ];then
-
+		# Git pormpt info
 		PROMPT_INFO="  $(git status -sb | sed -n '1p' | cut -d' ' -f2-) `UPDATE_GIT_ARCHIVES_PROMPT`"
 
 		# Try not change this. Change preferably the 'PROMPT_INFO' variable
 		EXPORT_INFO_BG='\[\033[48;5;${BACK_COLOR_4}m\]'
 		EXPORT_INFO_TEXT='\[\033[38;5;${CHAR_COLOR_4}m\]${PROMPT_INFO}\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_4}m\]'
-	fi
-
+	}
 	export PS1="\n\[\033[38;5;${CHAR_COLOR_1}m\]\[\033[48;5;${BACK_COLOR_1}m\] \s \[\033[38;5;${BACK_COLOR_1}m\]\[\033[48;5;${BACK_COLOR_2}m\]\[\033[38;5;${CHAR_COLOR_2}m\] \u \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_2}m\]\[\033[48;5;${BACK_COLOR_3}m\]\[\033[38;5;${CHAR_COLOR_3}m\] \w \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_3}m\]${EXPORT_INFO_BG}${EXPORT_INFO_TEXT}\n\[\033[48;5;${BACK_COLOR_5}m\]\[\033[38;5;${CHAR_COLOR_5}m\]\$\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_5}m\] \[$(tput sgr0)\]$TEXT_COLOR"
 }
 

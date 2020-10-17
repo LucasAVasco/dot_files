@@ -87,7 +87,7 @@ PROMPT_REFRESH()
 
 
 	# Git tool prompts
-	git branch 2> '/dev/null' > '/dev/null' &&
+	ls '.git/' 2> '/dev/null' > '/dev/null' &&
 	{
 		# Make the git integration prompt
 		PROMPT_INFO_1=" $(git status -sb | sed -n '1p' | cut -d' ' -f2- | cut -d'.' -f1)"
