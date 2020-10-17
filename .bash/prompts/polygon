@@ -6,6 +6,11 @@
 
 
 
+# Generate PS1 Variable
+PROMPT_COMMAND='PROMPT_REFRESH $?'
+
+
+
 # Sucess colors
 BACK_COLOR_SUCCESS=$BACK_COLOR_3
 CHAR_COLOR_SUCCESS=$CHAR_COLOR_3
@@ -66,6 +71,7 @@ PROMPT_REFRESH()
 		EXPORT_INFO_BG='\[\033[48;5;${BACK_COLOR_4}m\]'
 		EXPORT_INFO_TEXT='\[\033[38;5;${CHAR_COLOR_4}m\]${PROMPT_INFO}\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_4}m\]'
 	}
+
 	export PS1="\
 \n\[\033[38;5;${CHAR_COLOR_1}m\]\[\033[48;5;${BACK_COLOR_1}m\] \s \
 \[\033[38;5;${BACK_COLOR_1}m\]\[\033[48;5;${BACK_COLOR_2}m\]\
@@ -84,8 +90,6 @@ $TEXT_COLOR"
 
 
 # Another prompt Variables
-
-PROMPT_COMMAND='PROMPT_REFRESH $?'
 
 export PS2="\[\033[48;5;${BACK_COLOR_4}m\] \[$(tput sgr0)\]  $TEXT_COLOR"
 
