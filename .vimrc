@@ -161,12 +161,7 @@ let g:syntastic_check_on_wq = 0
 
 
 
-""" Configure SuperTab
-
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc','&completefunc']
-let g:SuperTabRetainCompletionType=2
-
+""" Configure TabNine
 inoremap <expr><Enter> pumvisible() ? "\<C-Y>" : "\<Enter>"
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
