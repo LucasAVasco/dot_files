@@ -18,13 +18,14 @@
 /.config/*
 /.local/*
 
+!/.config/rofi
+/.config/rofi/*
 
 !/.config/bspwm
 !/.config/alacritty
 !/.config/nvim
 !/.config/polybar
 !/.config/sxhkd
-!/.config/rofi
 
 !/.local/bin
 !/.local/lib
@@ -35,3 +36,4 @@
 !/.tmux.conf
 !/.vimrc
 !/.gitignore
+!/.config/rofi/config.rasi
