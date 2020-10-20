@@ -1,37 +1,30 @@
-" .CONFIG/NVIM/INIT.VIM 
+""""""""""";;; INIT.VIM ;;;"""""""""""
 
-" Encoding
+
+
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Recuperation
 set backup
 set undofile
 
-" Pluggings
-filetype plugin on
+set hidden
+set signcolumn=yes
+set mouse=a
 
-" MapLeader
+filetype plugin on
 let mapleader = "\\"
 
-
-
-""" Personal configurations
-
-" Lines and column
 set number
 set cursorline
 
-" Search
 set hls
 set hlsearch
 
-" Indentation
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
 
-" List chars
 set list
 set listchars=tab:ꞏꞏ
 
