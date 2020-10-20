@@ -196,6 +196,16 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
 
+
+""" Configure NerdTree
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeStatusline = ''
+let NERDTreeIgnore = []
+
+
+
 """ Configure NerdTree git Plugin
 
 let g:NERDTreeGitStatusUseNerdFonts = 1
@@ -203,13 +213,13 @@ let g:NERDTreeGitStatusShowIgnored = 1
 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
 				\ 'Modified'  :'✹',
-				\ 'Staged'    :'✚',
-				\ 'Untracked' :'✭',
-				\ 'Renamed'   :'➜',
-				\ 'Unmerged'  :'═',
-				\ 'Deleted'   :'✖',
-				\ 'Dirty'     :'✗',
-				\ 'Ignored'   :'☒',
+				\ 'Staged'    :'',
+				\ 'Untracked' :'',
+				\ 'Renamed'   :'🢚',
+				\ 'Unmerged'  :'',
+				\ 'Deleted'   :'',
+				\ 'Dirty'     :'•',
+				\ 'Ignored'   :'',
 				\ 'Clean'     :'✔︎',
 				\ 'Unknown'   :'?',
 				\ }
