@@ -392,6 +392,7 @@ let g:easy_align_ignore_unmatched = 1
 
 let g:tagbar_width = 30
 autocmd VimEnter * :TagbarToggle
+autocmd TabNewEntered * :TagbarToggle
 
 map <F8>     :TagbarToggle <CR>
 map <F6>     :TagbarOpen fj <CR>
