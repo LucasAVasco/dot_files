@@ -1,4 +1,9 @@
 {
+	// Prettier
+	"prettier.eslintIntegration": true,
+	"prettier.tabWidth": 4,
+
+	// Completion Labels
 	"suggest.completionItemKindLabels": {
 
 		"keyword": "\uf1de",
