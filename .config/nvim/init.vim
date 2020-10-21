@@ -96,10 +96,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Colorschemes
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ParamagicDev/vim-medic_chalk'
-Plug 'cormacrelf/vim-colors-github'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
-Plug 'sainnhe/forest-night'
+Plug 'cseelus/vim-colors-lucid'
 
 call plug#end()
 
