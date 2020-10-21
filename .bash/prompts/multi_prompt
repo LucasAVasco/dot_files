@@ -93,14 +93,14 @@ PROMPT_REFRESH()
 		PROMPT_INFO_1=" $BRANCH "
 		PROMPT_INFO_2="`UPDATE_GIT_ARCHIVES_PROMPT`"
 
-		# 
+		# Add branch tracking identification
 		if [ "$BRANCH_AHEAD" = 'L' ]; then
 			PROMPT_INFO_1+='L'
 
 		elif [ "$BRANCH_AHEAD" -gt 0 ]; then
 			PROMPT_INFO_1+="${BRANCH_AHEAD}🢙"
 
-		elif [ "$BRANCH_AHEAD" -lt 0]; then
+		elif [ "$BRANCH_AHEAD" -lt 0 ]; then
 			PROMPT_INFO_1+="${BRANCH_AHEAD}🢛"
 		fi
 
