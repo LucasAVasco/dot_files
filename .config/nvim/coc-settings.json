@@ -31,5 +31,39 @@
 		"snippet": "\ue60b",
 		"typeParameter": "\uf728",
 		"default": "\uf29c"
+	},
+
+	// Language
+	"languageserver": {
+
+		"ccls": {
+
+			"command": "ccls",
+			"filetypes": [
+				"c",
+				"cpp",
+				"cuda",
+				"objc",
+				"objcpp"
+			],
+
+			"rootPatterns": [
+				".ccls",
+				"compile_commands.json",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls-cache"
+				},
+
+				"client": {
+					"snippetSupport":true
+				}
+			}
+		}
 	}
 }
