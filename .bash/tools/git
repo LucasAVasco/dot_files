@@ -6,6 +6,8 @@
 
 
 
+## Branchs Archives
+
 # Declare git info variables
 local -i UNTRACKED=0
 local -i STAGED=0
@@ -41,4 +43,62 @@ if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; t
 	}
 
 	STASHED_ENTRIES=$(git stash list | wc -l)
+fi
+
+
+
+## Branch Tracking
+
+# Branchs
+local BRANCH=$(git branch | awk '/\*/' | cut -d' ' -f2-)
+local REMOTE="origin/${BRANCH}"
+
+local -i BRANCH_AHEAD=0
+
+
+if [ "$(echo "$BRANCH" | awk '/\(/')" = '' ]; then
+
+	if [ "$(git show-branch "$REMOTE" 2> '/dev/null')" != '' ]; then
+	
+		# Branch SHA1
+		local BRANCH_SHA=$(git show-branch --sha1-name "$BRANCH" | sed 's/^.*\[//' | sed 's/\].*$//')
+		local REMOTE_SHA=$(git show-branch --sha1-name "$REMOTE" | sed 's/^.*\[//' | sed 's/\].*$//')
+
+		# Git log variables
+		local loop
+		local LOG=$(git log --oneline "$BRANCH" "$REMOTE" | cut -d' ' -f1)
+
+		# Branch relative position in LOG
+		local -i NUM_BRANCH=0
+		local -i NUM_REMOTE=0
+		local -i NUM_LOOP=0
+
+		for loop in $LOG; do
+			if [ "$loop" = "$BRANCH_SHA" ]; then   # Local branch number
+				NUM_BRANCH=$NUM_LOOP
+
+			elif [ "$loop" = "$REMOTE_SHA" ]; then # Remote branch number
+				NUM_REMOTE=$NUM_LOOP
+			fi
+
+			NUM_LOOP+=1
+		done
+
+		# Set the AHEAD of branchs
+		BRANCH_AHEAD="${NUM_REMOTE}-${NUM_BRANCH}"
+
+	else
+		# Set the AHEAD of branchs to 'L'
+		unset BRANCH_AHEAD
+		local BRANCH_AHEAD='L'
+	fi
+
+	# Unset unnecessary variables
+	unset BRANCH_SHA
+	unset REMOTE_SHA
+	unset loop
+	unset LOG
+	unset NUM_BRANCH
+	unset NUM_REMOTE
+	unset NUM_LOOP
 fi
