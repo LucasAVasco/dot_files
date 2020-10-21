@@ -18,7 +18,7 @@ PROMPT_COMMAND='PROMPT_REFRESH $?'
 UPDATE_GIT_ARCHIVES_PROMPT()
 {
 	if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
-		echo "…$UNTRACKED +$MODIFIED ×$DELETED  •$STAGED ➤+$MODIFIED_STAGED ➤×$DELETED_STAGED  ⚑ $STASHED_ENTRIES "
+		echo "…$UNTRACKED +$MODIFIED ×$DELETED  •$STAGED ➤+$MODIFIED_STAGED ➤×$DELETED_STAGED  $UNMERGED ⚑ $STASHED_ENTRIES "
 	else
 		echo '✔ '
 	fi
