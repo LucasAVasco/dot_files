@@ -26,7 +26,7 @@ set shiftwidth=4
 set noexpandtab
 
 set list
-set listchars=tab:ꞏꞏ
+set listchars=tab:𝅙𝅙⎜
 
 
 
