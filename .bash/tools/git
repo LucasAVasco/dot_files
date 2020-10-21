@@ -15,6 +15,7 @@ local -i MODIFIED=0
 local -i MODIFIED_STAGED=0
 local -i DELETED=0
 local -i DELETED_STAGED=0
+local -i UNMERGED=0
 local -i STASHED_ENTRIES=0
 
 # Update the number os archives
@@ -36,6 +37,7 @@ if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; t
 		# Not Staged Archives
 		case "_$CHAR_1" in
 			'_?' ) UNTRACKED+=1;;
+			'_U' ) UNMERGED+=1;;
 			'_M' ) MODIFIED+=1;;
 			'_D' ) DELETED+=1;;
 		esac
