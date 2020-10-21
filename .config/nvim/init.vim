@@ -404,7 +404,15 @@ nmap gw      :InteractiveWindow<CR>
 
 
 
-""" Exec '.local_vimrc'
+""" Source '.vim/local_vimrc'
+
+if filereadable(".vim/local_vimrc")
+	source .vim/local_vimrc
+endif
+
+
+
+""" Source '.local_vimrc'
 
 if filereadable(".local_vimrc")
 	source .local_vimrc
