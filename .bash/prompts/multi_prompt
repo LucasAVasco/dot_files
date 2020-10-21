@@ -15,11 +15,8 @@ PROMPT_COMMAND='PROMPT_REFRESH $?'
 
 
 # Update git prompt tool
-UPDATE_GIT_PROMPT_TOOL()
+UPDATE_GIT_ARCHIVES_PROMPT()
 {
-	# Include GIT TOOLS FOR BASH
-	source $HOME'/.bash/tools/git'
-
 	if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
 		echo "…$UNTRACKED +$MODIFIED ×$DELETED  •$STAGED ➤+$MODIFIED_STAGED ➤×$DELETED_STAGED  ⚑ $STASHED_ENTRIES "
 	else
@@ -89,10 +86,23 @@ PROMPT_REFRESH()
 	# Git tool prompts
 	ls '.git/' 2> '/dev/null' > '/dev/null' &&
 	{
-		# Make the git integration prompt
-		PROMPT_INFO_1=" $(git status -sb | sed -n '1p' | cut -d' ' -f2- | cut -d'.' -f1)"
-		PROMPT_INFO_2="`UPDATE_GIT_PROMPT_TOOL`"
+		# Include GIT TOOLS FOR BASH
+		source $HOME'/.bash/tools/git'
 
+		# Make the git integration prompt
+		PROMPT_INFO_1=" $BRANCH "
+		PROMPT_INFO_2="`UPDATE_GIT_ARCHIVES_PROMPT`"
+
+		# 
+		if [ "$BRANCH_AHEAD" = 'L' ]; then
+			PROMPT_INFO_1+='L'
+
+		elif [ "$BRANCH_AHEAD" -gt 0 ]; then
+			PROMPT_INFO_1+="${BRANCH_AHEAD}🢙"
+
+		elif [ "$BRANCH_AHEAD" -lt 0]; then
+			PROMPT_INFO_1+="${BRANCH_AHEAD}🢛"
+		fi
 
 		# Format the prompt
 		PROMPT_INFO_1=\
