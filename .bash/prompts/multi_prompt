@@ -91,10 +91,10 @@ PROMPT_REFRESH()
 			PROMPT_INFO_1+='L'
 
 		elif [ "$BRANCH_AHEAD" -gt 0 ]; then
-			PROMPT_INFO_1+="${BRANCH_AHEAD}🢙"
+			PROMPT_INFO_1+="🢙${BRANCH_AHEAD}"
 
 		elif [ "$BRANCH_AHEAD" -lt 0 ]; then
-			PROMPT_INFO_1+="${BRANCH_AHEAD}🢛"
+			PROMPT_INFO_1+="🢛${BRANCH_AHEAD}"
 		fi
 
 		# Update PROMPT_WIDTH
