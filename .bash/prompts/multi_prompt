@@ -41,6 +41,8 @@ PROMPT_REFRESH()
 
 	local SPACES_NUMBER=''
 
+	local -i PROMPT_WIDTH=0
+
 
 	# Main prompt
 	MAIN_PROMPT='\
@@ -50,39 +52,28 @@ PROMPT_REFRESH()
 \[\033[38;5;${CHAR_COLOR_3}m\] \u \
 \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_2}m\]'
 
+	# Update PROMPT_WIDTH
+	PROMPT_WIDTH+=13
+	PROMPT_WIDTH+=$(echo -n $USER | wc -c)
+
 
 	# WORKING_DIRECTORY and ERROR_PROMPT
-	if [ "$1" != 0 ]; then
+	if [ "$1" != 0 ]; then       # An error occurred
 		WORKING_DIRECTORY='\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_ERROR}m\]\[\033[48;5;${BACK_COLOR_ERROR}m\]\[\033[38;5;${CHAR_COLOR_ERROR}m\] \w \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_ERROR}m\]\[$(tput sgr0)\]'
-
 		ERROR_PROMPT='\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_ERROR}m\]Error Code: '${1}'\[$(tput sgr0)\]\n'
-	else
-		WORKING_DIRECTORY=' \[$(tput sgr0)\]\[\033[38;5;${CHAR_COLOR_4}m\]\w'
 
+		# Update PROMPT_WIDTH
+		PROMPT_WIDTH+=9
+	else                         # An error didn't occur
+		WORKING_DIRECTORY=' \[$(tput sgr0)\]\[\033[38;5;${CHAR_COLOR_4}m\]\w'
 		ERROR_PROMPT=''
+
+		# Update PROMPT_WIDTH
+		PROMPT_WIDTH+=6
 	fi
 
-
-	# Right Floating Prompt
-	PROMPT_COMMAND_NUMBER+=1
-	local -i REPETITIONS=${COLUMNS}-$(echo ${PROMPT_COMMAND_NUMBER} | wc -c)-18
-
-
-	local -i loop1
-	for (( loop1=0; loop1<${REPETITIONS}; loop1++ )); do
-		SPACES_NUMBER+=" "
-	done
-
-	RIGHT_PROMPT='\
-\[$(tput sgr0)\]'\
-"${SPACES_NUMBER}"'\
-\[\033[38;5;${BACK_COLOR_3}m\]\
-\[\033[48;5;${BACK_COLOR_3}m\]\[\033[38;5;${CHAR_COLOR_5}m\] \j \
-\[\033[38;5;${BACK_COLOR_4}m\]\[\033[48;5;${BACK_COLOR_4}m\]\
-\[\033[38;5;${CHAR_COLOR_6}m\] ${PROMPT_COMMAND_NUMBER} \
-\[\033[38;5;${BACK_COLOR_5}m\]\[\033[48;5;${BACK_COLOR_5}m\] \
-\[\033[38;5;${CHAR_COLOR_7}m\] \@ \
-\[$(tput sgr0)\]'
+	# Update PROMPT_WIDTH
+	PROMPT_WIDTH+=$(pwd | sed "s/^\\/home\\/$USER/~/"| wc -c)-1
 
 
 	# Git tool prompts
@@ -105,6 +96,9 @@ PROMPT_REFRESH()
 		elif [ "$BRANCH_AHEAD" -lt 0 ]; then
 			PROMPT_INFO_1+="${BRANCH_AHEAD}🢛"
 		fi
+
+		# Update PROMPT_WIDTH
+		PROMPT_WIDTH+=$(echo -n "${PROMPT_INFO_1}${PROMPT_INFO_2}" | wc -c)-5-21+9
 
 		# Format the prompt
 		PROMPT_INFO_1=\
@@ -134,16 +128,66 @@ PROMPT_REFRESH()
 	}
 
 
-# End Prompt
+	# Right Floating Prompt
+	PROMPT_WIDTH+=25                            # Add 25 tolerance columns
+	PROMPT_COMMAND_NUMBER+=1
+
+	if [ "$PROMPT_WIDTH" -lt "$COLUMNS" ]; then # If there is space for right prompt
+
+		# RIGHT_PROMPT columns offset
+		local -i REPETITIONS=${COLUMNS}-$(echo ${PROMPT_COMMAND_NUMBER} | wc -c)-18
+		local -i loop1
+		for (( loop1=0; loop1<${REPETITIONS}; loop1++ )); do
+			SPACES_NUMBER+=" "
+		done
+
+		# RIGHT_PROMPT in the right
+		RIGHT_PROMPT='\
+\[$(tput sgr0)\]'\
+"${SPACES_NUMBER}"'\
+\[\033[38;5;${BACK_COLOR_3}m\]\
+\[\033[48;5;${BACK_COLOR_3}m\]\[\033[38;5;${CHAR_COLOR_5}m\] \j \
+\[\033[38;5;${BACK_COLOR_4}m\]\[\033[48;5;${BACK_COLOR_4}m\]\
+\[\033[38;5;${CHAR_COLOR_6}m\] ${PROMPT_COMMAND_NUMBER} \
+\[\033[38;5;${BACK_COLOR_5}m\]\[\033[48;5;${BACK_COLOR_5}m\] \
+\[\033[38;5;${CHAR_COLOR_7}m\] \@ \
+\[$(tput sgr0)\]\r'
+
+	else                                        # If there isn't space for right prompt
+
+		# RIGHT_PROMPT columns offset
+		local -i REPETITIONS=(${COLUMNS}/2)-10
+		local -i loop1
+		for (( loop1=0; loop1<${REPETITIONS}; loop1++ )); do
+			SPACES_NUMBER+=" "
+		done
+
+		# RIGHT_PROMPT in the middle
+		RIGHT_PROMPT='\
+\[$(tput sgr0)\]'\
+"${SPACES_NUMBER}"'\
+\[\033[38;5;${BACK_COLOR_3}m\]\
+\[\033[48;5;${BACK_COLOR_3}m\]\[\033[38;5;${CHAR_COLOR_5}m\] \j \
+\[\033[38;5;${BACK_COLOR_4}m\]\[\033[48;5;${BACK_COLOR_4}m\]\
+\[\033[38;5;${CHAR_COLOR_6}m\] \@ \
+\[\033[38;5;${BACK_COLOR_4}m\]\[\033[48;5;${BACK_COLOR_5}m\]\[\033[48;5;${BACK_COLOR_5}m\] \
+\[\033[38;5;${CHAR_COLOR_7}m\] ${PROMPT_COMMAND_NUMBER} \
+\[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_5}m\]\
+\[$(tput sgr0)\]\n\n'
+
+	fi
+
+
+	# End Prompt
 	END_PROMPT='\
 \[\033[48;5;${BACK_COLOR_6}m\] \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_6}m\]\
 \[$(tput sgr0)\]\[\033[38;5;${CHAR_COLOR_8}m\] \$:  \
 \[$(tput sgr0)\]\
 '
 
-# Export final Prompt
+	# Export final Prompt
 	export PS1="\
-\n\n${RIGHT_PROMPT}\r\
+\n\n${RIGHT_PROMPT}\
 ${MAIN_PROMPT}  \
 ${WORKING_DIRECTORY}  \
 ${PROMPT_INFO_1}\
