@@ -2,7 +2,7 @@
 
 ########## GIT TOOLS FOR BASH ##########
 
-# Make to be usaed with Bash
+# Make to be used with Bash
 
 
 
@@ -17,6 +17,12 @@ local -i DELETED=0
 local -i DELETED_STAGED=0
 local -i UNMERGED=0
 local -i STASHED_ENTRIES=0
+
+# declare support variables
+local -i loop
+local LINE
+local CHAR_0
+local CHAR_1
 
 # Update the number os archives
 if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
@@ -46,6 +52,12 @@ if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; t
 
 	STASHED_ENTRIES=$(git stash list | wc -l)
 fi
+
+# Unset support variables
+unset loop
+unset LINE
+unset CHAR_0
+unset CHAR_1
 
 
 

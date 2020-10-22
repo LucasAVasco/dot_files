@@ -2,7 +2,7 @@
 
 ############ EDGE PROMPT ############
 
-# Make to be usaed with Bash
+# Make to be used with Bash
 
 
 
@@ -67,6 +67,8 @@ PROMPT_REFRESH()
 	PROMPT_COMMAND_NUMBER+=1
 	local -i REPETITIONS=${COLUMNS}-$(echo ${PROMPT_COMMAND_NUMBER} | wc -c)-18
 
+
+	local -i loop1
 	for (( loop1=0; loop1<${REPETITIONS}; loop1++ )); do
 		SPACES_NUMBER+=" "
 	done
