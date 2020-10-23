@@ -1,0 +1,19 @@
+
+;::::::::::::::::::::;
+;                    ;
+;    WHITE COLORS    ;
+;                    ;
+;::::::::::::::::::::;
+
+
+
+background = #44ffffff
+background-alt = #77ffffff
+
+foreground = #fff
+foreground-alt = #77ffffff
+
+primary = #fff
+secondary = #e60053
+
+alert = #FF1505
