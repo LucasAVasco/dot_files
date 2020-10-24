@@ -1,6 +1,6 @@
 [module/network]
 type = custom/text
-content = 🖧
+content = 直
 
 click-left = nm-connection-editor
 
