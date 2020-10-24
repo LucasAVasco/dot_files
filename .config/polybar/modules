@@ -14,7 +14,10 @@ click-left = pulseaudio --start ; pavucontrol &
 
 [module/backlight]
 type = custom/text
-content = 🌣
+content = 
+
+scroll-up = brightnessctl s +10
+scroll-down = if [ "$(brightnessctl g)" -gt '15' ]; then brightnessctl s 10- ; fi
 
 
 [module/date]
