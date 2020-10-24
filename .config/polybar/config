@@ -46,7 +46,7 @@ font-2 = Noto Color Emoji:style=Regular;4
 ; Modules
 modules-left = bspwm
 modules-center =
-modules-right = date network audio backlight
+modules-right = date network audio backlight powermenu
 
 ; Tray
 tray-position = right

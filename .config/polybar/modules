@@ -36,9 +36,10 @@ label = %date% %time%
 [module/battery]
 
 [module/powermenu]
+type = custom/text
+content = ⏻
 
-
-
+click-left = obsession-logout &
 
 
 [module/bspwm]
