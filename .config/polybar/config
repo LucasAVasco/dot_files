@@ -50,7 +50,7 @@ modules-center =
 modules-right = date network audio backlight powermenu
 
 ; Tray
-tray-position = right
+tray-position = center
 tray-padding = 2
 
 wm-restack = bspwm
