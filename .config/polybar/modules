@@ -34,6 +34,10 @@ label = %date% %time%
 
 
 [module/battery]
+type = custom/script
+exec = ~/.config/polybar/battery_check.sh
+interval = 90
+
 
 [module/powermenu]
 type = custom/text

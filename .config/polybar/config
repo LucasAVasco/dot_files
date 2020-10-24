@@ -47,7 +47,7 @@ font-3 = Hack Nerd Font Mono:pixelsize=15:style=Regular;3
 ; Modules
 modules-left = bspwm
 modules-center =
-modules-right = date network audio backlight powermenu
+modules-right = date battery network audio backlight powermenu
 
 ; Tray
 tray-position = center
