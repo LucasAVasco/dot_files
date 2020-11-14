@@ -61,8 +61,8 @@ export TERM=screen-256color
 
 
 # Source Colorscheme
-source $HOME'/.bash/colorschemes/multi_prompt'
+source $HOME'/.bash/colorschemes/minimal'
 
 
 # Source Prompt
-source $HOME'/.bash/prompts/multi_prompt'
+source $HOME'/.bash/prompts/minimal.sh'
