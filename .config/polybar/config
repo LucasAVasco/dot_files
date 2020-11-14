@@ -31,7 +31,7 @@
 
 [colors]
 
-include-file = ~/.config/polybar/colors/white
+include-file = ~/.config/polybar/colors/dark
 
 
 [bar/topbar]

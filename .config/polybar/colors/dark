@@ -1,0 +1,19 @@
+
+;::::::::::::::::::::;
+;                    ;
+;     DARK COLORS    ;
+;                    ;
+;::::::::::::::::::::;
+
+; 2f343f
+
+background = #161722
+background-alt = #242638
+
+foreground = #fff
+foreground-alt = #aaa
+
+primary = #fff
+secondary = #e60053
+
+alert = #FF1505
