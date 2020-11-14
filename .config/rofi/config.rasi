@@ -22,7 +22,7 @@ configuration {
 	fake-transparency: false;
 	show-icons: true;
 	/*icon-theme: ;*/
-	theme: "themes/breeze-light";
+	theme: "themes/arc-dark";
 	/*color-normal: ;*/
 	/*color-urgent: ;*/
 	/*color-active: ;*/
