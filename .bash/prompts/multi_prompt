@@ -1,6 +1,6 @@
 #!/bin/bash
 
-############ EDGE PROMPT ############
+############ MULTI PROMPT ############
 
 # Make to be used with Bash
 
@@ -17,7 +17,7 @@ PROMPT_COMMAND='PROMPT_REFRESH $?'
 # Update git prompt tool
 UPDATE_GIT_ARCHIVES_PROMPT()
 {
-	if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
+	if [ "$HAS_GIT_INFO" = '1' ]; then
 		echo "…$UNTRACKED +$MODIFIED ×$DELETED  •$STAGED ➤+$MODIFIED_STAGED ➤×$DELETED_STAGED  $UNMERGED ⚑ $STASHED_ENTRIES "
 	else
 		echo '✔ '
@@ -113,7 +113,7 @@ PROMPT_REFRESH()
 
 
 		# Change the git integration tools colors
-		if [ "$(git status -s)" != '' -o "$(git stash list)" != "" ]; then
+		if [ "$HAS_GIT_INFO" = '1' ]; then
 			BACK_COLOR_GIT=$BACK_COLOR_GIT_UNDONE
 			CHAR_COLOR_GIT=$CHAR_COLOR_GIT_UNDONE
 		else

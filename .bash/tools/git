@@ -24,11 +24,21 @@ local LINE
 local CHAR_0
 local CHAR_1
 
+# Declare if has git info
+declare -i HAS_GIT_INFO=0
+declare GIT_STATUS=$(git status -s 2> '/dev/null')
+declare GIT_STASH=$(git stash list 2> '/dev/null')
+
 # Update the number os archives
-if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; then
+if [ "$GIT_STATUS" != '' -o "$GIT_STASH" != '' ]; then
+
+	# Verify need of git archives prompt
+	HAS_GIT_INFO=1
+
+	# Archive count loop
 	for ((loop=1;loop<=`git status -s | wc -l`; loop++))
 	{
-		LINE=$(git status -s | sed -n "${loop}p")
+		LINE=$(echo -n "$GIT_STATUS" | sed -n "${loop}p")
 
 		CHAR_0=${LINE:0:1}
 		CHAR_1=${LINE:1:1}
@@ -50,7 +60,7 @@ if [ "_$(git status -s 2> /dev/null)" != '_' -o "_$(git stash list)" != "_" ]; t
 
 	}
 
-	STASHED_ENTRIES=$(git stash list | wc -l)
+	STASHED_ENTRIES=$(echo -n "$GIT_STASH" | wc -l)
 fi
 
 # Unset support variables
@@ -58,6 +68,8 @@ unset loop
 unset LINE
 unset CHAR_0
 unset CHAR_1
+unset GIT_STATUS
+unset GIT_STASH
 
 
 
