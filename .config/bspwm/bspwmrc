@@ -1,5 +1,6 @@
 #! /bin/sh
 
+# Autoload
 sxhkd &
 compton &
 nitrogen --restore &
@@ -7,8 +8,9 @@ pulseaudio --start &
 polybar topbar &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
-bspc monitor -d I II III IV V VI VII VIII IX
 
+# BSPWM configurations
+bspc monitor -d I II III IV V VI VII VIII IX
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
@@ -25,7 +27,7 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 
-
+# Applications configurations
 DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
 DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
 
