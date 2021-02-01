@@ -77,12 +77,20 @@ super + F{1-9}
 	bspc desktop -f {I,II,III,IV,V,VI,VII,VIII,IX}
 
 # Flip desktop
-super + b ; {x,y}
+super + s ; {x,y}
 	bspc node $(bspc query -N -d | sed -n '1p') -F {horizontal,vertical}
 
 # Refresh desktop
 ctrl + alt + u
 	bspc-layout refresh
+
+# Focus mode
+super + f
+	~/.config/bspwm/focus_padding.sh
+
+# Beautiful mode
+super + b
+	~/.config/bspwm/beautiful_padding.sh
 
 
 

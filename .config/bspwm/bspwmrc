@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # Autoload
 sxhkd &
@@ -25,6 +25,8 @@ bspc config window_gap           0
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+source ~/.config/bspwm/beautiful_padding.sh
 
 
 # Applications configurations
