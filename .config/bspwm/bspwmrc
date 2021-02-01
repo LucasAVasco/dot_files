@@ -31,8 +31,8 @@ bspc rule -a Screenkey manage=off
 DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
 DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
 
-for loop in 'Gufw.py' 'Nm-connection-editor' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-app-Base' 'Pdfarranger'; do
-	bspc rule -a $loop state=floating;
+for loop in 'Gufw.py' 'Nm-connection-editor' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-app-Base' 'arduinopc' 'Pdfarranger' 'Tor Browser' 'Java'; do
+	bspc rule -a "$loop" state=floating;
 done
 
 bspc rule -a Pavucontrol state=floating rectangle=700x400
