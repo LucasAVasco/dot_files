@@ -359,7 +359,6 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeStatusline = ''
-let NERDTreeIgnore = []
 
 
 
