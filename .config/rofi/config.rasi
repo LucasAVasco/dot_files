@@ -163,3 +163,5 @@ configuration {
 	me-accept-entry: "MouseDPrimary";
 	me-accept-custom: "Control+MouseDPrimary";
 }
+
+/* vim:ft=css
