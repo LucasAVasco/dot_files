@@ -96,3 +96,6 @@ case $1 in
 # Unset variables
 unset DESKDIR
 unset HELPCHDESK
+
+
+# vim: nobackup

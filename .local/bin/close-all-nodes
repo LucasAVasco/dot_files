@@ -5,3 +5,6 @@ for loop in $(bspc query -N); do
 	bspc node -f $loop
 	bspc node -c
 done
+
+
+# vim: nobackup

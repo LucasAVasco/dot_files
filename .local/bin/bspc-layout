@@ -33,3 +33,6 @@ case $1 in
 		source ${BSPC_LAYOUTS_PATH}/$(cat $BSPC_LAYOUTS_VAR)
 		LAYOUT_REFRESH;;
 esac
+
+
+# vim: nobackup
