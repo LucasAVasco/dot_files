@@ -30,6 +30,10 @@
 !/.local/bin
 !/.local/lib
 
+/.local/bin/pyserial-miniterm
+/.local/bin/pyserial-ports
+/.local/lib/python3.8
+
 
 # Accept some archives
 !/.bashrc
