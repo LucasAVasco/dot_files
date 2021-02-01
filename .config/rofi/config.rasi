@@ -13,7 +13,6 @@ configuration {
 	columns: 1;
 	font: "mono 12";
 	separator-style: "dash";
-	scrollbar-width: 8;
 	scroll-method: 0;
 	fake-background: "screenshot";
 	window-format: "{w}    {c}   {t}";
