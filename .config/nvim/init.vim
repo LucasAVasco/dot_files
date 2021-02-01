@@ -21,9 +21,10 @@ set cursorline
 set hls
 set hlsearch
 
-set tabstop=4
-set shiftwidth=4
 set noexpandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 set list
 set listchars=tab:𝅙𝅙⎜
@@ -50,6 +51,20 @@ nmap <C-X>           <ESC>'<V'>
 map <silent> <C-C>  : w !xclip -i -selection clipboard <Enter><Enter>
 
  
+
+""" Configure for especific filetypes
+
+function ReconfigureTabs()
+	set noexpandtab
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
+endfunction
+
+" Python
+au BufEnter *.py call ReconfigureTabs()
+
+
  
 """ Configure cursor appearance
 
