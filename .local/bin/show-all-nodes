@@ -1,9 +1,12 @@
 #!/bin/bash
 
 # Show all nodes of bspwm
-for loop in $(bspc query -N); do
-	bspc node -f $loop
-		bspc node -g marked=on
+for loop in $(bspc query -N -d); do
+	IS_HIDDEN=$(bspc query -T -n $loop | sed 's/,/\n/g' | awk '/hidden/' | sed -n '1p' | cut -d':' -f2)
+
+	if [ "$IS_HIDDEN" == 'true' ]; then
+		bspc node $loop -g hidden
+	fi
 done
 
 

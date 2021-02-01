@@ -2,8 +2,7 @@
 
 # Close all node of bspwm
 for loop in $(bspc query -N); do
-	bspc node -f $loop
-	bspc node -c
+	bspc node $loop -c
 done
 
 
