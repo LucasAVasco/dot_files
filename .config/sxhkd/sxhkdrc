@@ -23,6 +23,10 @@ alt + F4
 super + t
 	thunar &
 
+# Screensooter
+Print
+	xfce4-screenshooter &
+
 
 
 ############## Window ##################
