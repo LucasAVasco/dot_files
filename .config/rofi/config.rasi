@@ -26,7 +26,7 @@ configuration {
 	/*color-urgent: ;*/
 	/*color-active: ;*/
 	/*color-window: ;*/
-	terminal: "rofi-sensible-terminal";
+	terminal: "alacritty";
 
 	// Position
 	location: 0;
