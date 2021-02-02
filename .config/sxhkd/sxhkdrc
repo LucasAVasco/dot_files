@@ -15,6 +15,13 @@ alt + F2
 alt + F3
 	rofi -config ~/.config/rofi/applications.rasi -show drun
 
+# Rofi chdesk
+shift + alt + F4
+	~/.config/rofi/desktops.sh
+
+# Rofi bspc-layout
+shift + alt + F5
+	~/.config/rofi/layouts.sh
 
 # Thunar
 super + t
