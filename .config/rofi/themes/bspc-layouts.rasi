@@ -1,0 +1,80 @@
+configuration {
+	columns: 6;
+	font: "NotoSans Nerd Font 20";
+	show-icons: true;
+	show-text: false;
+}
+
+* {
+	background-color: rgba(0, 0, 0, 0%);
+	text-color: rgb(255,255,255);
+}
+
+#window {
+	height:60%;
+	width:100%;
+	location:southwest;
+	anchor:southwest;
+	x-offset:0;
+	y-offset:0;
+}
+
+#inputbar {
+	border-color: rgb(100, 100, 100);
+	background-color: rgb(40, 40, 40);
+
+	margin: 60 30% 30 30%;
+	padding: 15 20 15 20;
+	border: 1;
+	border-radius: 10;
+}
+
+#entry {
+	background-color: rgb(80, 80, 80);
+	border-radius: 10;
+	padding: 20;
+}
+
+#case-indicator {
+	enabled: false;
+}
+
+#prompt {
+	enabled: false;
+}
+
+#listview {
+	background-color: rgba(0, 0, 0, 80%);
+
+	padding: 20 50 20 50;
+
+	spacing: 10;
+	scrollbar: false;
+}
+
+#element {
+	padding: 10 5 10 5;
+	border: 2;
+	border-radius: 20;
+	border-color: rgba(0, 0, 0, 0%);
+
+	text-color: rgba(0, 0, 0, 0%);
+	font: "NotoSans Nerd Font 100";
+
+	horizontal-align: 0.5;
+}
+
+#element.selected.normal {
+	background-color: rgba(255, 255, 255, 30%);
+}
+
+#element.normal.urgent {
+	background-color: rgba(255,100,100, 80%);
+}
+
+#element.selected.urgent {
+	background-color: rgba(255, 100, 100, 80%);
+	border-color: rgb(255, 0, 0);
+}
+
+/* vim:ft=css

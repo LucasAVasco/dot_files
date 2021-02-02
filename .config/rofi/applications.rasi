@@ -1,0 +1,9 @@
+configuration {
+
+	modi: "drun";
+
+	theme: "themes/applications";
+}
+
+
+/* vim:ft=css

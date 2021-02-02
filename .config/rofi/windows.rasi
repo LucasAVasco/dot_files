@@ -1,0 +1,9 @@
+configuration {
+
+	modi: "window";
+
+	theme: "themes/windows";
+}
+
+
+/* vim:ft=css
