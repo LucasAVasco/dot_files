@@ -4,7 +4,7 @@
 
 [colors]
 
-include-file = ~/.config/polybar/bars/topbar/colors/dark-blue.ini
+include-file = ~/.config/polybar/bars/topbar/colors/dark-gray.ini
 
 
 ; [bar]
