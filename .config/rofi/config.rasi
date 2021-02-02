@@ -21,7 +21,7 @@ configuration {
 	fake-transparency: false;
 	show-icons: true;
 	/*icon-theme: ;*/
-	theme: "themes/arc-dark";
+	theme: "themes/black";
 	/*color-normal: ;*/
 	/*color-urgent: ;*/
 	/*color-active: ;*/

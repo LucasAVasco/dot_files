@@ -19,7 +19,6 @@
 /.local/*
 
 !/.config/rofi
-/.config/rofi/*
 
 !/.config/bspwm
 /.config/bspwm/icons
