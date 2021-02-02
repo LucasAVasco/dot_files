@@ -1,37 +1,48 @@
 #!/bin/bash
 
-# OBS.: This is experimental
 
 
-
+# Paths
 BSPC_FUNCTIONS_LIB=~/.local/lib/bspc_layout_functions
 BSPC_LAYOUTS_PATH=~/.config/bspwm/layouts
 BSPC_LAYOUTS_VAR=~/.local/var/bspc_layout_var
 
 
 
+# Define the operation
 case $1 in
+	# List the layouts
 	ls | list )
 		ls $BSPC_LAYOUTS_PATH;;
 
+	# Change to the $2 layout
 	change )
-		HAVE_LAYOUT='false'
-		for loop in ls $BSPC_LAYOUTS_PATH; do
-			if [ $2 != $loop ]; then
-				HAVE_LAYOUT='true'
-			fi
-		done
-		if [ $HAVE_LAYOUT == 'true' ]; then
-			source $BSPC_FUNCTIONS_LIB
-			source ${BSPC_LAYOUTS_PATH}/$2
-			echo "$2" > $BSPC_LAYOUTS_VAR
-			LAYOUT_CHANGE
-		fi;;
+		HAS_LAYOUT='false'
 
-	refresh )
-		source $BSPC_FUNCTIONS_LIB
-		source ${BSPC_LAYOUTS_PATH}/$(cat $BSPC_LAYOUTS_VAR)
-		LAYOUT_REFRESH;;
+		for loop in $(ls $BSPC_LAYOUTS_PATH); do
+			if [ $2 == $loop ]; then
+				# Change the 'HAS_LAYOUT' variable
+				HAS_LAYOUT='true'
+
+				# Source the files
+				source $BSPC_FUNCTIONS_LIB
+				source ${BSPC_LAYOUTS_PATH}/$2
+
+				# Execute the change
+				UPDATE_LEAFS
+				LAYOUT_CHANGE
+
+				break
+			fi
+
+		done
+
+		# If there aren't the $2 layout
+		if [ "$HAS_LAYOUT" == 'false' ]; then
+			echo "There aren't this layout. Use 'bspc-layout ls' to view the available layouts."
+		fi
+
+		;;
 esac
 
 
