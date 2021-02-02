@@ -9,15 +9,12 @@ ctrl + alt + t
 
 # Rofi windows
 alt + F2
-	rofi -show window &
+	rofi -config ~/.config/rofi/windows.rasi -show window
 
 # Rofi Applications
 alt + F3
-	rofi -show drun &
+	rofi -config ~/.config/rofi/applications.rasi -show drun
 
-# Xfce4 Appfinder
-alt + F4
-	xfce4-appfinder &
 
 # Thunar
 super + t
