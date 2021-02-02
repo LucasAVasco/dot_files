@@ -9,4 +9,6 @@ elif [ "$1" = '-' ]; then  # Subtracts 10 to brightness
 		brightnessctl -q s 10-
 	fi
 
+elif [ "$1" = '' ]; then
+	brightnessctl -q s 15
 fi
