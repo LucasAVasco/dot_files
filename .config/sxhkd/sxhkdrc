@@ -81,10 +81,6 @@ super + F{1-9}
 super + s ; {x,y}
 	bspc node $(bspc query -N -d | sed -n '1p') -F {horizontal,vertical}
 
-# Refresh desktop
-ctrl + alt + u
-	bspc-layout refresh
-
 # Focus mode
 super + f
 	~/.config/bspwm/focus_padding.sh
