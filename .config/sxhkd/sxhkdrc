@@ -8,19 +8,19 @@ ctrl + alt + t
 	alacritty &
 
 # Rofi windows
-alt + F2
+super + 2
 	rofi -config ~/.config/rofi/windows.rasi -show window
 
 # Rofi Applications
-alt + F3
+super + 3
 	rofi -config ~/.config/rofi/applications.rasi -show drun
 
 # Rofi chdesk
-shift + alt + F4
+super + 4
 	~/.config/rofi/desktops.sh
 
 # Rofi bspc-layout
-shift + alt + F5
+super + 5
 	~/.config/rofi/layouts.sh
 
 # Thunar
@@ -44,8 +44,8 @@ super + alt + {1-4}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Set the node's flag
-super + alt + {5-9}
-	bspc node -g {sticky,private,locked,marked=on,marked=off}
+super + alt + {5-9,0}
+	bspc node -g {hidden,sticky,private,locked,marked=on,marked=off}
 
 # Move the window to another desktop
 super + alt + F{1-9}
