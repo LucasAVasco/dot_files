@@ -1,7 +1,15 @@
 #!/bin/bash
 
+# Get the nodes
+if [ "$1" == '-a' ]; then
+	NODES=$(bspc query -N)
+
+else
+	NODES=$(bspc query -N -d)
+fi
+
 # Show all nodes of bspwm
-for loop in $(bspc query -N -d); do
+for loop in $NODES; do
 	IS_HIDDEN=$(bspc query -T -n $loop | sed 's/,/\n/g' | awk '/hidden/' | sed -n '1p' | cut -d':' -f2)
 
 	if [ "$IS_HIDDEN" == 'true' ]; then
