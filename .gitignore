@@ -33,6 +33,13 @@
 
 /.local/bin/pyserial-miniterm
 /.local/bin/pyserial-ports
+/.local/bin/epylint
+/.local/bin/isort
+/.local/bin/isort-identify-imports
+/.local/bin/pylint
+/.local/bin/pyreverse
+/.local/bin/symilar
+
 /.local/lib/python3.8
 
 
