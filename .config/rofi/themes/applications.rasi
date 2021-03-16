@@ -1,5 +1,5 @@
 configuration {
-	columns: 4;
+	columns: 8;
 	font: "NotoSans Nerd Font 12";
 
 	show-icons: true;
@@ -48,8 +48,8 @@ configuration {
 }
 
 #listview {
-	margin: 40;
-	spacing: 2;
+	margin: 40 100;
+	spacing: 10;
 	scrollbar: false;
 }
 
@@ -57,8 +57,18 @@ configuration {
 	padding: 10 5 10 5;
 	border: 2;
 	border-radius: 20;
+	orientation: vertical;
 	border-color: rgba(0, 0, 0, 0%);
 	text-color: rgb(255,255,255);
+}
+
+#element-icon {
+    size:                           70px;
+}
+
+#element-text {
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
 }
 
 #element.selected.normal {

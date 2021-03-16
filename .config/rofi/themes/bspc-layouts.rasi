@@ -47,6 +47,7 @@ configuration {
 	background-color: rgba(0, 0, 0, 80%);
 
 	padding: 20 50 20 50;
+	horizontal-align: 0.5;
 
 	spacing: 10;
 	scrollbar: false;
@@ -61,7 +62,17 @@ configuration {
 	text-color: rgba(0, 0, 0, 0%);
 	font: "NotoSans Nerd Font 100";
 
+	orientation: vertical;
+}
+
+#element-icon {
+	size: 170;
 	horizontal-align: 0.5;
+}
+
+#element-text {
+	enabled: false;
+
 }
 
 #element.selected.normal {

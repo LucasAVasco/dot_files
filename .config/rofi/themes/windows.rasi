@@ -16,7 +16,7 @@ configuration {
 	background-color: rgba(0, 0, 0, 60%);
 	border-radius: 50;
 
-	height:300;
+	height:350;
 	width:555;
 }
 
@@ -33,11 +33,11 @@ configuration {
 
 #listview {
 	margin: 10 20 20 20;
-	padding: 5 2 5 2;
+	padding: 15 20;
 	border-radius: 20;
 	spacing: 5;
 
-	layout: horizontal;
+	layout: vertical;
 	background-color: rgba(100,100,100,30%);
 }
 
@@ -47,6 +47,16 @@ configuration {
 	border-radius: 20;
 	border-color: rgba(0, 0, 0, 0%);
 	position: center;
+	orientation: vertical;
+	horizontal-align: 0.5;
+}
+
+#element-icon {
+	horizontal-align: 0.5;
+}
+
+#element-text {
+	enabled: false;
 }
 
 #element.selected.normal {
