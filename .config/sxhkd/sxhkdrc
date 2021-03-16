@@ -106,7 +106,7 @@ super + Escape
 
 # Lock the screen
 ctrl + alt + l
-	slimlock & sleep 1 ; xset dpms force off
+	slimlock 2> '/dev/null' & sleep 1 ; xset dpms force off
 
 # Quit and reboot sxhkd
 shift + alt + {q,r}
