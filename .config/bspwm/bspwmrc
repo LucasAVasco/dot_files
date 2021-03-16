@@ -6,6 +6,7 @@ compton &
 nitrogen --restore &
 pulseaudio --start &
 polybar topbar &
+gnome-keyring-daemon --start &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 
