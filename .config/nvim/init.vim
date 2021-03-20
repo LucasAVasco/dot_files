@@ -144,7 +144,8 @@ let g:coc_global_extensions = [
 			\ 'coc-eslint',
 			\ 'coc-html',
 			\ 'coc-css',
-			\ 'coc-tsserver'
+			\ 'coc-tsserver',
+			\ 'coc-python'
 			\ ]
 
 
@@ -305,6 +306,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_python_checkers = ["pycodestyle"]
 
 
 """ Configure YouCompleteMe
