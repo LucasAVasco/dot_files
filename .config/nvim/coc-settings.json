@@ -1,4 +1,8 @@
 {
+	// Optimization
+	"suggest.timeout": 5000,
+	"signature.triggerSignatureWait": 1000,
+
 	// Prettier
 	"prettier.eslintIntegration": true,
 	"prettier.tabWidth": 4,

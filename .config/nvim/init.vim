@@ -229,7 +229,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Highlight the symbol and its references when holding the cursor
-set updatetime=500
+set updatetime=1000
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
