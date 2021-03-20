@@ -31,14 +31,12 @@
 !/.local/bin
 !/.local/lib
 
-/.local/bin/pyserial-miniterm
-/.local/bin/pyserial-ports
-/.local/bin/epylint
-/.local/bin/isort
-/.local/bin/isort-identify-imports
-/.local/bin/pylint
-/.local/bin/pyreverse
-/.local/bin/symilar
+.local/bin/*
+
+!/.local/bin/bspc-layout
+!/.local/bin/chdesk
+!/.local/bin/close-all-nodes
+!/.local/bin/show-all-nodes
 
 /.local/lib/python3.8
 
