@@ -1,4 +1,11 @@
 
+# If not running interactively, don't do anything
+case $- in
+	*i*) ;;
+	  *) return;;
+esac
+
+
 # Configure History
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
