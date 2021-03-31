@@ -73,6 +73,10 @@ fi
 
 
 
+# Configure ASDF and completions
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
 # Add local bin path
 PATH+=:~/.local/bin
 
