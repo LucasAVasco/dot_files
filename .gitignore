@@ -21,7 +21,6 @@
 !/.config/rofi
 
 !/.config/bspwm
-/.config/bspwm/icons
 
 !/.config/alacritty
 !/.config/nvim
