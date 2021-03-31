@@ -5,6 +5,7 @@ sxhkd &
 compton &
 nitrogen --restore &
 pulseaudio --start &
+polybar simple-topbar &
 gnome-keyring-daemon --start &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 thunar --daemon &

@@ -4,11 +4,11 @@
 
 [colors]
 
-include-file = ~/.config/polybar/bars/topbar/colors/light-white.ini
+include-file = ~/.config/polybar/bars/simple-topbar/colors/transparent-white.ini
 
 
 ; [bar]
-include-file = ~/.config/polybar/bars/topbar/config.ini
+include-file = ~/.config/polybar/bars/simple-topbar/config.ini
 
 
 [settings]
