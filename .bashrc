@@ -77,7 +77,7 @@ fi
 PATH+=:~/.local/bin
 
 # Tmux and vim colors
-export TERM=screen-256color
+export TERM=xterm-256color
 
 
 
