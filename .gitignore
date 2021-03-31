@@ -45,5 +45,7 @@
 !/.tmux.conf
 !/.vimrc
 !/.gitignore
+!/.npmrc
+!/.yarnrc.yml
 !/.config/rofi/config.rasi
 !/.config/compton.conf
