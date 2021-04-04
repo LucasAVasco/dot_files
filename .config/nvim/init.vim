@@ -126,13 +126,20 @@ let g:edge_disable_italic_comment = 1
 let g:sonokai_enable_italic = 0
 let g:sonokai_disable_italic_comment = 1
 
-colorscheme sonokai
+colorscheme monokai
 
 "" Fixing colorchemes
 if g:colors_name == "github"
 	autocmd VimEnter * :hi airline_tab guifg=#ffffff guibg=#6a737d
 endif
 
+
+""" Enable Italic
+highlight Comment cterm=italic gui=italic
+
+" If don't works
+set t_ZH=[3m
+set t_ZR=[23m
 
 
 """ Configure COC
