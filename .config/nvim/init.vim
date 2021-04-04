@@ -100,6 +100,22 @@ Plug 'ParamagicDev/vim-medic_chalk'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
 Plug 'cseelus/vim-colors-lucid'
+Plug 'cocopon/iceberg.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'sickill/vim-monokai'
+Plug 'franbach/miramare'
+Plug 'rakr/vim-colors-rakr'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'rafalbromirski/vim-aurora'
+Plug 'alessandroyorba/sierra'
+Plug 'AlessandroYorba/Breve'
+Plug 'AlessandroYorba/Alduin'
+Plug 'romainl/apprentice'
+Plug 'fabi1cazenave/kalahari.vim'
+Plug 'pacokwon/onedarkpaco.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'fenetikm/falcon'
 
 call plug#end()
 
@@ -110,6 +126,8 @@ call plug#end()
 syntax enable
 
 set background=dark
+
+let g:afterglow_inherit_background=1
 
 " Fix terminal colors
 if exists('+termguicolors')
@@ -131,6 +149,14 @@ colorscheme monokai
 "" Fixing colorchemes
 if g:colors_name == "github"
 	autocmd VimEnter * :hi airline_tab guifg=#ffffff guibg=#6a737d
+endif
+
+if g:colors_name == "alduin"
+	autocmd VimEnter * :hi String guibg=a
+endif
+
+if g:colors_name == "onedarkpaco"
+	let g:airline_theme="onedark"
 endif
 
 
