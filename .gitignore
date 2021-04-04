@@ -47,5 +47,6 @@
 !/.gitignore
 !/.npmrc
 !/.yarnrc.yml
+!/.profile
 !/.config/rofi/config.rasi
 !/.config/compton.conf
