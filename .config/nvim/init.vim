@@ -48,8 +48,8 @@ vmap <S-TAB>        : s/^\t//g <Enter> :/$\^ <Enter>
 vmap <TAB>          : s/^/\t/g <Enter> :/$\^ <Enter>
  
 nmap <C-X>           <ESC>'<V'>
-map <silent> <C-C>  : w !xclip -i -selection clipboard <Enter><Enter>
-
+nmap <silent> <C-C> : w !xclip -i -selection clipboard <Enter><Enter>
+vmap <C-C>            "+y
  
  
 """ Configure cursor appearance
