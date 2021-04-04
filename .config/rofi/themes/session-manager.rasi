@@ -4,14 +4,14 @@ configuration {
 }
 
 * {
-	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0%);
 	text-color: rgba(0, 0, 0, 0%);
 }
 
 #window {
 	background-color: rgba(0, 0, 0, 80%);
 
-	border-radius: 20 0 0 20;
+	border-radius: 50 0 0 50;
 
 	height:585;
 	width:115;
@@ -20,6 +20,10 @@ configuration {
 	x-offset:0;
 	y-offset:0;
 
+}
+
+#mainbox {
+	background-color: rgba(0, 0, 0, 40%);
 }
 
 #inputbar {
@@ -35,7 +39,7 @@ configuration {
 
 #element {
 	padding: 10;
-	border-radius: 20;
+	border-radius: 60;
 }
 
 #element-icon {
