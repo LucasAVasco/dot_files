@@ -27,8 +27,8 @@ set softtabstop=4
 set shiftwidth=4
 
 set list
-set listchars=tab:𝅙𝅙⎜
-
+set listchars=tab:𝅙𝅙╎
+" Alternatives -> ⎜╏┇┋┆┊
 
 
 """ Maps
