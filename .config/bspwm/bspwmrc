@@ -44,6 +44,9 @@ bspc rule -a Pavucontrol state=floating rectangle=700x400
 bspc rule -a Xfce4-appfinder state=floating rectangle=400x480+`python -c "print($DISP_WIDTH/2 - 200)"`+`python -c "print($DISP_HEIGHT/2 - 240)"`
 
 
+# Make all floating windows open in center
+bspc rule -a '*' center=on
+
 # Fix mouse appearance
 sleep 10
 bspc rule -a Lxappearance hidden=on
