@@ -142,6 +142,11 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 
+" Change Whitespace foreground colors
+highlight Whitespace ctermfg=240 guifg=#585858
+
+
+
 """ Configure COC
 
 let g:coc_global_extensions = [
