@@ -22,7 +22,8 @@ bspc config normal_border_color  '#666666'
 bspc config focused_border_color '#aaaaaa'
 
 bspc config border_width         1
-bspc config window_gap           0
+
+bspc config single_monocle true
 
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
