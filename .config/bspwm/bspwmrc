@@ -36,7 +36,7 @@ source ~/.config/bspwm/beautiful_padding.sh
 DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
 DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
 
-for loop in 'Gufw.py' 'Nm-connection-editor' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-app-Base' 'arduinopc' 'Pdfarranger' 'Tor Browser' 'Java' 'Gdebi-gtk'; do
+for loop in 'Gufw.py' 'Nm-connection-editor' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-app-Base' 'arduinopc' 'Pdfarranger' 'Tor Browser' 'Java' 'Gdebi-gtk' 'Gnome-calculator'; do
 	bspc rule -a "$loop" state=floating;
 done
 
