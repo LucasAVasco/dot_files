@@ -42,10 +42,10 @@ nmap <silent> <F4>  : Files <CR>
 nmap <C-F>          : %s///g<left><left><left>
 vmap <C-F>          : s///g<left><left><left>
  
-nmap <S-TAB>        : '<,'>s/^\t//g <Enter>
-nmap <TAB>          : '<,'>s/^/\t/g <Enter>
-vmap <S-TAB>        : s/^\t//g <Enter>
-vmap <TAB>          : s/^/\t/g <Enter>
+nmap <S-TAB>        : '<,'>s/^\t//g <Enter> :/$\^ <Enter>
+nmap <TAB>          : '<,'>s/^/\t/g <Enter> :/$\^ <Enter>
+vmap <S-TAB>        : s/^\t//g <Enter> :/$\^ <Enter>
+vmap <TAB>          : s/^/\t/g <Enter> :/$\^ <Enter>
  
 nmap <C-X>           <ESC>'<V'>
 map <silent> <C-C>  : w !xclip -i -selection clipboard <Enter><Enter>
