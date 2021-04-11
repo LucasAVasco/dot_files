@@ -96,6 +96,10 @@ super + f
 super + b
 	~/.config/bspwm/beautiful_padding.sh
 
+# Close or open plank
+super + p
+	~/.config/plank/bspwm_plank/update.sh &
+
 
 
 ############## System ##################

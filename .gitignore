@@ -22,6 +22,12 @@
 
 !/.config/bspwm
 
+!/.config/plank
+/.config/plank/*
+!/.config/plank/bspwm_plank
+/.config/plank/bspwm_plank/*
+!/.config/plank/bspwm_plank/update.sh
+
 !/.config/alacritty
 !/.config/nvim
 !/.config/polybar
