@@ -7,7 +7,7 @@ configuration {
 
 * {
 	background-color: rgba(0, 0, 0, 0%);
-	text-color: rgb(255,255,255);
+	text-color: rgb(0,0,0);
 }
 
 #window {
@@ -20,18 +20,17 @@ configuration {
 }
 
 #inputbar {
-	border-color: rgb(100, 100, 100);
-	background-color: rgb(40, 40, 40);
+	background-color: rgba(0, 0, 0, 40%);
 
 	margin: 60 30% 30 30%;
 	padding: 15 20 15 20;
 	border: 1;
-	border-radius: 10;
+	border-radius: 60;
 }
 
 #entry {
-	background-color: rgb(80, 80, 80);
-	border-radius: 10;
+	background-color: rgb(230, 230, 230);
+	border-radius: 60;
 	padding: 20;
 }
 
