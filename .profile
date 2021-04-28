@@ -30,3 +30,6 @@ fi
 if [ "$DESKTOP_SESSION" == "bspwm" ]; then
 	export DESKTOP_SESSION="gnome"
 fi
+
+# Add Homebrew
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
