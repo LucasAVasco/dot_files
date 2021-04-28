@@ -35,6 +35,7 @@
 
 !/.local/bin
 !/.local/lib
+!/.local/share
 
 .local/bin/*
 
@@ -42,6 +43,12 @@
 !/.local/bin/chdesk
 !/.local/bin/close-all-nodes
 !/.local/bin/show-all-nodes
+!/.local/bin/kdeconnect-close
+
+.local/share/*
+!/.local/share/applications/
+.local/share/applications/*
+!/.local/share/applications/close-kde-connect.desktop
 
 /.local/lib/python3.8
 

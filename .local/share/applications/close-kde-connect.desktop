@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Close KDE Connect
+Comment=Close all KDE Connect process
+Exec=kdeconnect-close
+Icon=kdeconnect
+Path=
+Terminal=false
+StartupNotify=false

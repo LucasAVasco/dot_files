@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+# Kill kdeconnect
+pkill kdeconnect-app 2> '/dev/null'
+pkill kdeconnectd 2> '/dev/null'
+pkill kdeconnect-indi 2> '/dev/null'
+pkill kdeconnect-sett 2> '/dev/null'
+pkill kdeconnect-sms 2> '/dev/null'
+
+# Return success
+exit 0
+
+
+# vim: nobackup
