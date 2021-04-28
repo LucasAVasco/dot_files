@@ -76,6 +76,9 @@ super + ctrl + {h,j,k,l,g}
 super + alt + {h,j,k,l}
 	bspc node -s {west,south,north,east} --follow
 
+# Kill a window
+super + Delete
+	xkill &
 
 
 ############# Desktop ##################
