@@ -29,6 +29,8 @@ fi
 # Change the 'DESKTOP_SESSION' enviroment variable to "gnome" if in bspwm
 if [ "$DESKTOP_SESSION" == "bspwm" ]; then
 	export DESKTOP_SESSION="gnome"
+	export XDG_SESSION_DESKTOP="gnome"
+	export XDG_CURRENT_DESKTOP="gnome"
 fi
 
 # Add Homebrew
