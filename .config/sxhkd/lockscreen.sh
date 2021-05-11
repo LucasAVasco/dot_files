@@ -2,7 +2,7 @@
 
 
 # Lock the screen
-slimlock 2> '/dev/null' &
+light-locker-command -l
 
 # Wait 2 seconds
 sleep 1
