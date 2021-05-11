@@ -42,7 +42,7 @@ case $SELECTED_COMMAND in
 
 	# Switch-user
 	'Switch user' )
-		pkill bspwm
+		bspc quit
 	;;
 
 esac
