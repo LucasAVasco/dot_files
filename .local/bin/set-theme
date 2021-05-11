@@ -1,0 +1,65 @@
+#!/bin/bash
+
+
+# Change a file attribute
+CHANGE_FILE_ATTRIBUTE()
+{
+	# $1: file path
+	# $2: Attribute pathern
+	# $3: Attribute Value
+
+	# Change the file attribute
+	sed -i s/"${2}.*"/"${2}=${3}"/ "$1"
+}
+
+
+# Main code
+case "$1" in
+	'-g' | '--gtk' )
+		# GTK 2
+		CHANGE_FILE_ATTRIBUTE ~/.gtkrc-2.0 'gtk-theme-name' "\"$2\""
+
+		# GTK 3
+		CHANGE_FILE_ATTRIBUTE ~/.config/gtk-3.0/settings.ini 'gtk-theme-name' "$2"
+
+		# Gnome
+		gsettings set org.gnome.desktop.interface gtk-theme "$2"
+		;;
+
+	'-i' | '--icon')
+		# GTK 2
+		CHANGE_FILE_ATTRIBUTE ~/.gtkrc-2.0 'gtk-icon-theme-name' "\"$2\""
+
+		# GTK 3
+		CHANGE_FILE_ATTRIBUTE ~/.config/gtk-3.0/settings.ini 'gtk-icon-theme-name' "$2"
+
+		# Default Icon Theme
+		CHANGE_FILE_ATTRIBUTE ~/.icons/default/index.theme 'Inherits' "$2"
+
+		# Gnome
+		gsettings set org.gnome.desktop.interface icon-theme "$2"
+		;;
+
+	'-c' | '--cursor' )
+		# GTK 2
+		CHANGE_FILE_ATTRIBUTE ~/.gtkrc-2.0 'gtk-cursor-theme-name' "\"$2\""
+
+		# GTK 3
+		CHANGE_FILE_ATTRIBUTE ~/.config/gtk-3.0/settings.ini 'gtk-cursor-theme-name' "$2"
+
+		# Gnome
+		gsettings set org.gnome.desktop.interface cursor-theme "$2"
+
+		# Mate
+		gsettings set org.mate.peripherals-mouse cursor-theme "$2"
+
+		# Xfce
+		xfconf-query --channel xsettings --property /Gtk/CursorThemeName --set "$2"
+
+		# X server
+		echo "Xcursor.theme: $2" | xrdb
+		xsetroot -cursor_name left_ptr
+esac
+
+
+# vim: nobackup
