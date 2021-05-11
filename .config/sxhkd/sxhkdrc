@@ -107,9 +107,6 @@ super + p
 
 ############## System ##################
 
-# Reload the sxhkd
-super + Escape
-	pkill -USR1 -x sxhkd
 
 # Lock the screen
 ctrl + alt + l
@@ -122,3 +119,7 @@ shift + alt + {q,r}
 # suspend, reboot and poweroff
 super + ctrl + alt + {s,r,q}
 	sudo systemctl {suspend,reboot,poweroff}
+
+
+# Comments:
+# To reload sxhkd, use: pkill -USR1 -x sxhkd
