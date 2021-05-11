@@ -52,10 +52,8 @@ bspc rule -a Plank layer=ABOVE
 # Make all floating windows open in center
 bspc rule -a '*' center=on
 
-# Fix mouse appearance
-sleep 10
-bspc rule -a Lxappearance hidden=on
-lxappearance &
-sleep 10
-pkill lxappearance
-bspc rule -r Lxappearance
+
+# Themes
+set-theme --gtk 'Flat-Remix-GTK-Blue-Solid'
+set-theme --icon 'Flat-Remix-Blue-Light'
+set-theme --cursor 'Breeze_Snow'
