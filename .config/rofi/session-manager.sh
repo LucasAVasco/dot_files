@@ -37,9 +37,7 @@ case $SELECTED_COMMAND in
 
 	# Lock-screen
 	'Lock screen' )
-		slimlock 2> '/dev/null' &
-		sleep 1
-		xset dpms force off
+		~/.config/sxhkd/lockscreen.sh
 	;;
 
 	# Switch-user

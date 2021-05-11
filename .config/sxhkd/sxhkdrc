@@ -110,7 +110,7 @@ super + p
 
 # Lock the screen
 ctrl + alt + l
-	slimlock 2> '/dev/null' & sleep 1 ; xset dpms force off
+	~/.config/sxhkd/lockscreen.sh
 
 # Quit and reboot sxhkd
 shift + alt + {q,r}
