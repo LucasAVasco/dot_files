@@ -74,5 +74,6 @@
 	// Python
 	"python.linting.pylintEnabled": false,
 	"python.linting.pydocstyleEnabled": true,
+	"python.linting.pydocstylePath": "~/.local/bin/pydocstyle",
 	"python.linting.enabled": true
 }
