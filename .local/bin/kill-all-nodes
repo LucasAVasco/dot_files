@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+# Kill all nodes of bspwm
+for loop in $(bspc query -N); do
+	bspc node $loop -k
+done
+
+
+# vim: nobackup

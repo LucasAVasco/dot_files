@@ -44,6 +44,7 @@
 !/.local/bin/chdesk
 !/.local/bin/close-all-nodes
 !/.local/bin/show-all-nodes
+!/.local/bin/kill-all-nodes
 !/.local/bin/kdeconnect-close
 !/.local/bin/set-theme
 
