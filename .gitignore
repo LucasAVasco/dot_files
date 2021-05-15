@@ -9,6 +9,7 @@
 # Accept some directories
 !/.bash
 !/.tmux
+!/.backup
 
 
 # Accept recursive directories
