@@ -17,11 +17,11 @@ super + 3
 
 # Rofi chdesk
 super + 4
-	~/.config/rofi/desktops.sh
+	~/.config/rofi/desktops.sh &
 
 # Rofi bspc-layout
 super + 5
-	~/.config/rofi/layouts.sh
+	~/.config/rofi/layouts.sh &
 
 # Thunar
 super + t
@@ -93,11 +93,11 @@ super + s ; {x,y}
 
 # Focus mode
 super + f
-	~/.config/bspwm/focus_padding.sh
+	~/.config/bspwm/focus_padding.sh &
 
 # Beautiful mode
 super + b
-	~/.config/bspwm/beautiful_padding.sh
+	~/.config/bspwm/beautiful_padding.sh &
 
 # Close or open plank
 super + p
@@ -110,15 +110,15 @@ super + p
 
 # Lock the screen
 ctrl + alt + l
-	~/.config/sxhkd/lockscreen.sh
+	~/.config/sxhkd/lockscreen.sh &
 
-# Quit and reboot sxhkd
+# Quit and reboot bspwm
 shift + alt + {q,r}
-	bspc {quit,wm -r}
+	bspc {quit,wm -r} &
 
 # suspend, reboot and poweroff
 super + ctrl + alt + {s,r,q}
-	sudo systemctl {suspend,reboot,poweroff}
+	sudo systemctl {suspend,reboot,poweroff} &
 
 
 # Comments:
