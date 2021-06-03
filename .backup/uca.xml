@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1616366554260957-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>gtk-directory</icon>
+	<name>Open As Root</name>
+	<unique-id>1616433888451903-1</unique-id>
+	<command>pkexec thunar %f</command>
+	<description>Open directory as root</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>system-file-manager</icon>
+	<name>Open in new window</name>
+	<unique-id>1618778907566447-1</unique-id>
+	<command>thunar %F</command>
+	<description>Open directory in a new thunar window</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>applications-featured</icon>
+	<name>Create Launcher</name>
+	<unique-id>1618281542059180-1</unique-id>
+	<command>exo-desktop-item-edit --create-new --type Application %f</command>
+	<description>Create a new launcher in this directory</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>insert-link</icon>
+	<name>Create Web Link</name>
+	<unique-id>1618281811273630-2</unique-id>
+	<command>exo-desktop-item-edit --create-new --type Link %f</command>
+	<description>Create a new web link in this directory</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>download</icon>
+	<name>Download File</name>
+	<unique-id>1620859089196130-1</unique-id>
+	<command>download-pygtk %f</command>
+	<description>Download a file from web</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>emblem-symbolic-link</icon>
+	<name>Create SymLink</name>
+	<unique-id>1620928505635389-1</unique-id>
+	<command>ln -Ts %f %n&quot; (symlink)&quot;</command>
+	<description>Create a symbolic link</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>preferences-system-search</icon>
+	<name>Search files</name>
+	<unique-id>1620928820597190-2</unique-id>
+	<command>catfish %f</command>
+	<description>Serach files with catfish</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>kdiff3</icon>
+	<name>Compare files</name>
+	<unique-id>1620928887598211-3</unique-id>
+	<command>meld %F</command>
+	<description>Compare selected files with Meld</description>
+	<patterns>*</patterns>
+	<text-files/>
+</action>
+</actions>
