@@ -47,15 +47,6 @@
 	<directories/>
 </action>
 <action>
-	<icon>download</icon>
-	<name>Download File</name>
-	<unique-id>1620859089196130-1</unique-id>
-	<command>download-pygtk %f</command>
-	<description>Download a file from web</description>
-	<patterns>*</patterns>
-	<directories/>
-</action>
-<action>
 	<icon>emblem-symbolic-link</icon>
 	<name>Create SymLink</name>
 	<unique-id>1620928505635389-1</unique-id>
