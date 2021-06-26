@@ -1,0 +1,7 @@
+@import url("/usr/share/themes/ZorinBlue-Light/gtk-3.0/gtk.css");
+
+
+/* Fix padding */
+decoration {
+	box-shadow: none;
+}

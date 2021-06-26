@@ -57,6 +57,12 @@
 /.local/lib/python3.8
 
 
+# Zorin os theme modified to bspwm
+!/.themes
+/.themes/*
+!/.themes/BspwmBlue-Light
+
+
 # Accept some archives
 !/.bashrc
 !/.tmux.conf
