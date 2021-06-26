@@ -59,7 +59,3 @@ bspc rule -a Plank layer=ABOVE
 bspc rule -a '*' center=on
 
 
-# Themes
-set-theme --gtk 'Flat-Remix-GTK-Blue-Solid'
-set-theme --icon 'Flat-Remix-Blue-Light'
-set-theme --cursor 'Breeze_Snow'
