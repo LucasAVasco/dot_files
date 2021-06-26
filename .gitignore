@@ -72,3 +72,7 @@
 !/.profile
 !/.config/rofi/config.rasi
 !/.config/compton.conf
+
+
+# Gitattributes
+!/.gitattributes
