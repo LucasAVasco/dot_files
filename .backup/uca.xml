@@ -87,4 +87,17 @@
 	<patterns>*</patterns>
 	<text-files/>
 </action>
+<action>
+	<icon>gtkhash</icon>
+	<name>Get Hash</name>
+	<unique-id>1624307463424133-1</unique-id>
+	<command>gtkhash %F</command>
+	<description>Gets the file hash</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
 </actions>
