@@ -59,6 +59,13 @@ case "$1" in
 		# X server
 		echo "Xcursor.theme: $2" | xrdb
 		xsetroot -cursor_name left_ptr
+		;;
+
+	'--fix-cursor' )
+		# X server
+		echo "Xcursor.theme: $2" | xrdb
+		xsetroot -cursor_name left_ptr
+		;;
 esac
 
 
