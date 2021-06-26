@@ -62,6 +62,12 @@
 !/.themes/BspwmBlue-Light
 
 
+# Plank Themes
+!/.local/share/plank
+/.local/share/plank/*
+!/.local/share/plank/themes
+
+
 # Accept some archives
 !/.bashrc
 !/.tmux.conf
