@@ -47,7 +47,7 @@ for loop in 'Gufw.py' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-a
 done
 
 bspc rule -a Pavucontrol state=floating rectangle=850x400
-bspc rule -a Xfce4-appfinder state=floating rectangle=400x480+`python -c "print($DISP_WIDTH/2 - 200)"`+`python -c "print($DISP_HEIGHT/2 - 240)"`
+bspc rule -a Xfce4-appfinder state=floating rectangle=400x480+`python3 -c "print($DISP_WIDTH/2 - 200)"`+`python3 -c "print($DISP_HEIGHT/2 - 240)"`
 
 
 # Init Plank
