@@ -22,4 +22,14 @@ if [ "$PREFIX" != '' ]; then
 
 	# Output
 	echo "   ${ICON:${SELECTED_ICON}:1} ${BATTERY_PERC}% "
+
+	# Send a notification if battery is lower than 25%
+	if [ "$BATTERY_PERC" -lt '25' ]; then
+		notify-send -u critical -i battery-caution 'Low battery!' 'Connect to Charger'
+
+		# Shutdown if the battery is lower than 15%
+		if [ "$BATTERY_PERC" -lt '15' ]; then
+			shutdown now
+		fi
+	fi
 fi
