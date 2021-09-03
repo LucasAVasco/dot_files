@@ -27,7 +27,7 @@ BottomPadding=1.9
 ItemPadding=3
 
 # Indicator
-IndicatorSize=6
+IndicatorSize=10
 
 # Shadow
 IconShadowSize=0
