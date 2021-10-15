@@ -2,4 +2,4 @@
 
 
 # Lock the screen
-light-locker-command -l &
+i3lock &
