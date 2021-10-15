@@ -1,0 +1,57 @@
+# White-rounded theme for plank
+
+
+[PlankTheme]
+# Format
+TopRoundness=23
+BottomRoundness=23
+LineWidth=0
+
+# Stroke colors
+OuterStrokeColor=0;;0;;0;;255
+InnerStrokeColor=0;;0;;0;;255
+
+# Fil collors
+FillStartColor=0;;0;;0;;130
+FillEndColor=0;;0;;0;;130
+
+
+[PlankDockTheme]
+# Basic
+FadeOpacity=1
+
+# Padding
+HorizPadding=3.3
+TopPadding=1.5
+BottomPadding=1.9
+ItemPadding=3
+
+# Indicator
+IndicatorSize=10
+
+# Shadow
+IconShadowSize=0
+
+# Bounce Height
+UrgentBounceHeight=0.8
+LaunchBounceHeight=0.8
+
+# Time
+ClickTime=250
+UrgentBounceTime=700
+LaunchBounceTime=560
+ActiveTime=250
+SlideTime=250
+FadeTime=300
+HideTime=200
+ItemMoveTime=300
+
+# Glow, Urgent
+GlowSize=25
+GlowTime=700
+GlowPulseTime=2000
+UrgentHueShift=0
+
+# Others
+CascadeHide=true
+BadgeColor=0;;0;;0;;0
