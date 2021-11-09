@@ -1,0 +1,8 @@
+geometry 7x1+140+0
+max_geometry 7x1
+
+scrollbars horizontal
+scrollbars_step 120
+
+window_layer top
+transparent true
