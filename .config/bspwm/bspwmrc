@@ -11,6 +11,7 @@ gnome-keyring-daemon --start &
 /usr/lib/*/xfce4/notifyd/xfce4-notifyd &
 kdeconnect-app &
 kdeconnect-indicator &
+nm-applet &
 thunar --daemon &
 
 
