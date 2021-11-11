@@ -1,8 +1,8 @@
-geometry 10x1+170+0
-max_geometry 7x1
+geometry 10x4+150+30
+max_geometry 10x4
 
 scrollbars horizontal
 scrollbars_step 120
 
 window_layer top
-transparent true
+window_type utility
