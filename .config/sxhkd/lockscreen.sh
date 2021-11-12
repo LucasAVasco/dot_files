@@ -2,4 +2,4 @@
 
 
 # Lock the screen
-i3lock &
+~/.config/bspwm/screenlocker/run.sh &

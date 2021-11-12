@@ -68,6 +68,11 @@
 !/.local/share/plank/themes
 
 
+# Screen locker (Bspwm)
+/.config/bspwm/screenlocker/cache
+/.config/bspwm/screenlocker/wallpaper.png
+
+
 # Accept some archives
 !/.bashrc
 !/.tmux.conf

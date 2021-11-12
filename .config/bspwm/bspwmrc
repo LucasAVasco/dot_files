@@ -2,7 +2,7 @@
 
 # Autoload
 sxhkd &
-compton &
+compton --dbus &
 nitrogen --restore &
 pulseaudio --start &
 ~/.config/polybar/update.sh &
@@ -51,11 +51,12 @@ done
 bspc rule -a Pavucontrol state=floating rectangle=850x400
 bspc rule -a Xfce4-appfinder state=floating rectangle=400x480+`python3 -c "print($DISP_WIDTH/2 - 200)"`+`python3 -c "print($DISP_HEIGHT/2 - 240)"`
 
-
 # Init Plank
 bspc rule -a Plank layer=ABOVE
 ~/.config/plank/bspwm_plank/update.sh &
 
+# Conky above the screen
+bspc rule -a Conky-top layer=ABOVE
 
 # Make all floating windows open in center
 bspc rule -a '*' center=on

@@ -8,7 +8,7 @@
 RESET_COMPTON()
 {
 	pkill compton
-	compton &
+	compton --dbus &
 }
 
 
