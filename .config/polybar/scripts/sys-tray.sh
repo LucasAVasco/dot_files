@@ -4,11 +4,11 @@
 # $2: Polybar theme name
 
 
-# Reset default system tray bar (also excludes expanded system tray)
-RESET_SYSTEM_TRAY()
+# Reset compton (fix shadows of default system tray bar)
+RESET_COMPTON()
 {
-	pkill stalonetray
-	pkill -USR1 -f 'polybar system-tray'
+	pkill compton
+	compton &
 }
 
 
@@ -24,15 +24,13 @@ OPEN_EXPANDED_SYSTEM_TRAY()
 case "$1" in
 	# Switches between default system tray and expanded system tray
 	"switch" )
-		pkill stalonetray && \
-			{
-				RESET_SYSTEM_TRAY &
-			} || \
-				OPEN_EXPANDED_SYSTEM_TRAY "$2"
+		pkill stalonetray || \
+			OPEN_EXPANDED_SYSTEM_TRAY "$2"
 		;;
 
-	# Closes expanded system tray and reloads default system tray
+	# Closes the expanded system tray and reloads compton
 	"reload" | "reset" )
-		RESET_SYSTEM_TRAY &
+		pkill stalonetray
+		RESET_COMPTON &
 		;;
 esac
