@@ -13,6 +13,7 @@ kdeconnect-app &
 kdeconnect-indicator &
 nm-applet &
 thunar --daemon &
+xss-lock -- ~/.config/bspwm/screenlocker/run.sh &
 
 
 # BSPWM configurations
