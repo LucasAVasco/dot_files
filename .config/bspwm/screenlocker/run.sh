@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+# Doesn't run if the screenlocker is already running
+pgrep -f "xtrlock" && exit
+
+
 # Functions
 source ~/.config/bspwm/screenlocker/functions.sh
 
