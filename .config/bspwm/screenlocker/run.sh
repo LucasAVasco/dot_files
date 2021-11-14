@@ -24,6 +24,7 @@ OPTIONS="-f -i -p -G"
 qiv $OPTIONS ~/.config/bspwm/screenlocker/wallpaper.png &
 
 # Shows the widgets
+sleep 0.5  # If the widgets are shown before the wallpaper, they go to the back of the wallpaper (sleep fix this)
 source ~/.config/bspwm/screenlocker/widgets.sh
 
 # Locks keyboard and mouse
