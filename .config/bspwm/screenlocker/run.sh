@@ -16,6 +16,13 @@ xtrlock &
 NOTIFYD_STATE=$(xfconf-query -c xfce4-notifyd -p /do-not-disturb)
 xfconf-query -c xfce4-notifyd -p /do-not-disturb -s true
 
+# Saves if Plank is running and closes it
+PLANK_IS_RUNNING='false'
+if [ "$(pgrep -f "$HOME/.config/plank/bspwm_plank/update.sh")" ]; then
+	~/.config/plank/bspwm_plank/update.sh &
+	PLANK_IS_RUNNING='true'
+fi
+
 # Changes default compton configurations
 SEND_MESSAGE_TO_COMPTON string:no_fading_openclose boolean:false
 SEND_MESSAGE_TO_COMPTON string:fade_delta int32:20
@@ -74,3 +81,8 @@ bspc config border_width $BORDER_WIDTH
 
 # Resets notification daemon
 xfconf-query -c xfce4-notifyd -p /do-not-disturb -s $NOTIFYD_STATE
+
+# Reloads Plank
+if [ "$PLANK_IS_RUNNING" == 'true' ]; then
+	~/.config/plank/bspwm_plank/update.sh
+fi
