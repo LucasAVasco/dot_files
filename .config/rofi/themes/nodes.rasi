@@ -1,0 +1,70 @@
+configuration {
+	font: "NotoSans Nerd Font 12";
+}
+
+* {
+	background-color: rgba(0, 0, 0, 0%);
+	text-color: rgb(100,100,100);
+}
+
+#window {
+	height: 380;
+	width: 600;
+
+	location: north;
+	anchor: north;
+
+	x-offset: 0;
+	y-offset: 50;
+
+}
+
+#inputbar {
+	enabled: false;
+}
+
+#listview {
+	columns: 2;
+
+	margin: 50;
+	padding: 25 10 25 10;
+
+	border: 1;
+	border-color: rgba(150, 150, 150, 80%);
+	border-radius: 20;
+
+	spacing: 2;
+	scrollbar: false;
+
+	background-color: rgba(240, 240, 240, 90%);
+}
+
+#element {
+	padding: 10 5 10 5;
+	margin: 0 20 0 20;
+
+	border-radius: 30;
+	border-color: rgba(0, 0, 0, 0%);
+
+	horizontal-align: 0.5;
+}
+
+#element-text {
+	horizontal-align: 0.5;
+}
+
+#element.selected.normal {
+	background-color: rgba(255, 255, 255, 95%);
+}
+
+#element.normal.urgent {
+	background-color: rgba(255,100,100, 80%);
+}
+
+#element.selected.urgent {
+	background-color: rgba(255, 100, 100, 80%);
+	border-color: rgb(255, 0, 0);
+}
+
+
+/* vim:ft=css

@@ -7,6 +7,10 @@ super + Return
 ctrl + alt + t
 	alacritty &
 
+# Rofi node options
+super + 1
+	~/.config/rofi/nodes.sh &
+
 # Rofi windows
 super + 2
 	rofi -config ~/.config/rofi/windows.rasi -show window &
