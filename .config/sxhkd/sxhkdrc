@@ -33,8 +33,10 @@ super + t
 
 # Screensooter
 Print
-	xfce4-screenshooter &
+	gnome-screenshot -i &
 
+super + F12
+	gnome-screenshot -i &
 
 
 ############## Window ##################
