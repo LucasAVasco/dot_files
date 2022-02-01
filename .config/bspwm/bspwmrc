@@ -1,5 +1,10 @@
 #! /bin/bash
 
+
+# Fix cursor (need to be run before starting kdeconnect)
+set-theme --fix-cursor
+
+
 # Autoload
 sxhkd &
 compton --dbus &
@@ -61,7 +66,3 @@ bspc rule -a Conky-top layer=ABOVE
 
 # Make all floating windows open in center
 bspc rule -a '*' center=on
-
-
-# Fix cursor
-set-theme --fix-cursor

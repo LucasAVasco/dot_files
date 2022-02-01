@@ -13,6 +13,16 @@ CHANGE_FILE_ATTRIBUTE()
 }
 
 
+# Get a file attribute
+GET_FILE_ATTRIBUTE()
+{
+	# $1: File path
+	# $2: Attribute name
+
+	cat "$1" | awk "/$2/" | sed -n 1p | sed 's/.*=//g'
+}
+
+
 # Main code
 case "$1" in
 	'-g' | '--gtk' )
@@ -63,7 +73,7 @@ case "$1" in
 
 	'--fix-cursor' )
 		# X server
-		echo "Xcursor.theme: $2" | xrdb
+		echo "Xcursor.theme: $(GET_FILE_ATTRIBUTE ~/.config/gtk-3.0/settings.ini gtk-cursor-theme-name)" | xrdb
 		xsetroot -cursor_name left_ptr
 		;;
 esac
