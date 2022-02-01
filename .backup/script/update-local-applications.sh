@@ -2,11 +2,12 @@
 
 
 APP_LIST=(
-	'exo-web-browser.desktop'
-	'exo-mail-reader.desktop'
-	'exo-file-manager.desktop'
-	'exo-terminal-emulator.desktop'
-	'exo-preferred-applications.desktop'
+	'xfce4-file-manager.desktop'
+	'xfce4-mail-reader.desktop'
+	'xfce4-mime-settings.desktop'
+	'xfce4-terminal-emulator.desktop'
+	'xfce4-web-browser.desktop'
+
 	'lxappearance.desktop'
 	'xfce4-notifyd-config.desktop'
 )
