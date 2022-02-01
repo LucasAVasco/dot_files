@@ -12,6 +12,10 @@ source ~/.config/bspwm/screenlocker/functions.sh
 # Temporarily locks the keyboard and mouse
 xtrlock &
 
+# Activates the '/do-not-disturbe' property if it is disabled
+xfconf-query -c xfce4-notifyd -p /do-not-disturb > '/dev/null' 2> '/dev/null' || \
+	xfconf-query -c xfce4-notifyd -p /do-not-disturb -s false
+
 # Saves notification daemon state and pauses it
 NOTIFYD_STATE=$(xfconf-query -c xfce4-notifyd -p /do-not-disturb)
 xfconf-query -c xfce4-notifyd -p /do-not-disturb -s true
