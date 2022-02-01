@@ -4,6 +4,30 @@
 # $1: qiv options
 
 
+cd ~/.config/bspwm/screenlocker
+
+
+# Creates cahce directory
+mkdir -p cache
+
+
+# if there aren't a wallpapaer, creates it
+if [ ! -f wallpaper.png ]; then
+	convert -size 1000x1000 xc:black wallpaper.png
+fi
+
+
+# Display dimensions
+declare -i DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
+declare -i DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
+
+
+# Resizes the wallpaper
+if [ ! -f cache/wallpaper.png ]; then
+	convert wallpaper.png -resize "$DISP_WIDTH"x"$DISP_HEIGHT"\! cache/wallpaper.png
+fi
+
+
 # Wallpaper variables
 OPTIONS="$1"
 QUERY_FULLSCREEN=''
@@ -12,10 +36,10 @@ NODE=''
 # Wallpaper window
 while [ "$QUERY_FULLSCREEN" == '' ]; do
 	# Closes a already runnig wallpaper
-	pkill -f "qiv ${OPTIONS} ${HOME}/.config/bspwm/screenlocker/wallpaper.png"
+	pkill -f "qiv ${OPTIONS} ${HOME}/.config/bspwm/screenlocker/cache/wallpaper.png"
 
 	# Opens the wallpaper
-	qiv $OPTIONS ~/.config/bspwm/screenlocker/wallpaper.png &
+	qiv $OPTIONS ~/.config/bspwm/screenlocker/cache/wallpaper.png &
 
 	# Gets wallapaer node. If isn't the wallpaper node, the 'while' loop will continue
 	sleep 0.7
@@ -26,9 +50,6 @@ while [ "$QUERY_FULLSCREEN" == '' ]; do
 done
 
 
-# Display dimensions
-declare -i DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
-declare -i DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
 
 # Initial wallpapaer dimensions
 NODE_DIMENSIONS=$(bspc query -T -n "$NODE" | sed 's/.*"floatingRectangle"://g' | sed 's/[{}]//g')
@@ -54,6 +75,9 @@ bspc node "$NODE" -l above
 
 bspc node "$NODE" --move $(( -X_POS - X_ZOOM )) $(( -Y_POS - Y_ZOOM ))
 bspc node --resize bottom_right $((DISP_WIDTH - WIDTH + 2*X_ZOOM)) $(( DISP_HEIGHT - HEIGHT + 2*Y_ZOOM))
+
+
+cd -
 
 
 # The wallpaper will focus every 4 seconds
