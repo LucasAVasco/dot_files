@@ -74,8 +74,10 @@
 	<name>Compare files</name>
 	<unique-id>1620928887598211-3</unique-id>
 	<command>meld %F</command>
-	<description>Compare selected files with Meld</description>
+	<description>Compare files with Meld</description>
 	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
 	<text-files/>
 </action>
 <action>
