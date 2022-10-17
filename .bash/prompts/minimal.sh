@@ -28,7 +28,7 @@ PROMPT_REFRESH()
 \[\033[38;5;${CHAR_COLOR_3}m\] -\
 \[\033[38;5;${CHAR_COLOR_4}m\] \u\
 \[\033[38;5;${CHAR_COLOR_5}m\] [\
-\[\033[38;5;${CHAR_COLOR_6}m\]\@\
+\[\033[38;5;${CHAR_COLOR_6}m\]\A\
 \[\033[38;5;${CHAR_COLOR_5}m\]]\
 \[\033[38;5;${CHAR_COLOR_7}m\] 🢚\
 '
