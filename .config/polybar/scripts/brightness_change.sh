@@ -1,22 +1,23 @@
 #!/bin/bash
 
 
-declare -i MIN_VALUE="$(brightnessctl m)*5/100"
+# Gets the brightness value and calculates the percentage to add
+declare -i CURRENT_BRIGHTNESS_PERCENT=$(($(brightnessctl g)*100/$(brightnessctl m)))
+ADD_BRIGHTNESS_PERCENT=$(bc -l <<< "e(${CURRENT_BRIGHTNESS_PERCENT}*l(50)/100)" | sed 's/\..*$//g')
 
+# Adds brightness
+if [ "$1" == '+' ]; then
+	brightnessctl -q s "+${ADD_BRIGHTNESS_PERCENT}%"
 
-if [ "$1" = '+' ]; then    # Adds 10% to brightness
-	brightnessctl -q s +5%
-
-elif [ "$1" = '-' ]; then  # Subtractes 10% to brightness
-	if [ "$(brightnessctl g)" -gt "$MIN_VALUE" ]; then
-		brightnessctl -q s 5%-
+# Subtracts brightness
+elif [ "$1" == '-' ]; then
+	# Doesn't blanks the screen
+	if [ "$CURRENT_BRIGHTNESS_PERCENT" -gt "$ADD_BRIGHTNESS_PERCENT" ]; then
+		brightnessctl -q s "${ADD_BRIGHTNESS_PERCENT}%-"
 	fi
-
-elif [ "$1" = '' ]; then   # Sets 15% to brightness
-	brightnessctl -q s 6%
 fi
 
-# Fixes the brightness if it bypassed the minimum value
-if [ "$(brightnessctl g)" -lt "$MIN_VALUE" ]; then
-	brightnessctl -q s 6%
+# Minimun brightness (doesn't blanks the screen)
+if [ "$(brightnessctl g)" == 0 ]; then
+	brightnessctl -q s 1
 fi
