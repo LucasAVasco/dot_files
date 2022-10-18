@@ -12,10 +12,6 @@ source ~/.config/bspwm/screenlocker/functions.sh
 # Temporarily locks the keyboard and mouse
 xtrlock &
 
-# Removes system tray bar
-TRAY_BAR_REMOVED=false
-pkill -f "polybar system-tray" && TRAY_BAR_REMOVED=true
-
 # Activates the '/do-not-disturbe' property if it is disabled
 xfconf-query -c xfce4-notifyd -p /do-not-disturb > '/dev/null' 2> '/dev/null' || \
 	xfconf-query -c xfce4-notifyd -p /do-not-disturb -s false
@@ -86,11 +82,6 @@ SEND_MESSAGE_TO_COMPTON string:fade_out_step double:"$FADE_OUT_STEP"
 
 # Restores Bspwm configurations
 bspc config border_width $BORDER_WIDTH
-
-# Restores system tray bar
-if [ "$TRAY_BAR_REMOVED" == true ]; then
-	polybar system-tray &
-fi
 
 # Resets notification daemon
 xfconf-query -c xfce4-notifyd -p /do-not-disturb -s $NOTIFYD_STATE
