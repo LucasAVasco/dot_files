@@ -46,6 +46,9 @@ source ~/.config/bspwm/beautiful_padding.sh
 ~/.config/bspwm/touchpad.sh
 
 
+# Make all floating windows open in center
+bspc rule -a '*' center=on
+
 # Applications configurations
 DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
 DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
@@ -63,6 +66,3 @@ bspc rule -a Plank layer=ABOVE
 
 # Conky above the screen
 bspc rule -a Conky-top layer=ABOVE
-
-# Make all floating windows open in center
-bspc rule -a '*' center=on
