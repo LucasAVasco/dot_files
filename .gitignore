@@ -72,6 +72,11 @@
 /.config/bspwm/screenlocker/cache
 /.config/bspwm/screenlocker/wallpaper.png
 
+# Thunar custom actions
+!/.config/Thunar
+/.config/Thunar/*
+!/.config/Thunar/uca.xml
+
 
 # Accept some archives
 !/.bashrc
