@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+# Removes the cache directory to update data
+rm -r ~/.config/bspwm/screenlocker/cache 2> /dev/null
+
+# Switches the wallpaper
+cp "$1" ~/.config/bspwm/screenlocker/wallpaper
+
+
+# vi: nobackup

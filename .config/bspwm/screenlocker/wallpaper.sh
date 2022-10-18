@@ -12,8 +12,8 @@ mkdir -p cache
 
 
 # if there aren't a wallpapaer, creates it
-if [ ! -f wallpaper.png ]; then
-	convert -size 1000x1000 xc:black wallpaper.png
+if [ ! -f wallpaper ]; then
+	convert -size 1000x1000 xc:black wallpaper
 fi
 
 
@@ -23,8 +23,8 @@ declare -i DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' 
 
 
 # Resizes the wallpaper
-if [ ! -f cache/wallpaper.png ]; then
-	convert wallpaper.png -resize "$DISP_WIDTH"x"$DISP_HEIGHT"\! cache/wallpaper.png
+if [ ! -f cache/wallpaper ]; then
+	convert wallpaper -resize "$DISP_WIDTH"x"$DISP_HEIGHT"\! cache/wallpaper
 fi
 
 
@@ -36,10 +36,10 @@ NODE=''
 # Wallpaper window
 while [ "$QUERY_FULLSCREEN" == '' ]; do
 	# Closes a already runnig wallpaper
-	pkill -f "qiv ${OPTIONS} ${HOME}/.config/bspwm/screenlocker/cache/wallpaper.png"
+	pkill -f "qiv ${OPTIONS} ${HOME}/.config/bspwm/screenlocker/cache/wallpaper"
 
 	# Opens the wallpaper
-	qiv $OPTIONS ~/.config/bspwm/screenlocker/cache/wallpaper.png &
+	qiv $OPTIONS ~/.config/bspwm/screenlocker/cache/wallpaper &
 
 	# Gets wallapaer node. If isn't the wallpaper node, the 'while' loop will continue
 	sleep 0.7

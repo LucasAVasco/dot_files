@@ -93,4 +93,13 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon>wallpaper</icon>
+	<name>Set as screenlocker wallpaper</name>
+	<unique-id>1666130337413675-1</unique-id>
+	<command>~/.local/bin/set-custom-screenlocker-wallpaper %f</command>
+	<description>Use image as wallpaper for custom screenlocker</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>

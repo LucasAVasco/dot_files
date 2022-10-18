@@ -40,6 +40,7 @@
 
 .local/bin/*
 
+# User executables
 !/.local/bin/bspc-layout
 !/.local/bin/chdesk
 !/.local/bin/close-all-nodes
@@ -47,6 +48,7 @@
 !/.local/bin/kill-all-nodes
 !/.local/bin/kdeconnect-close
 !/.local/bin/set-theme
+!/.local/bin/set-custom-screenlocker-wallpaper
 
 .local/share/*
 !/.local/share/applications/
@@ -70,7 +72,7 @@
 
 # Screen locker (Bspwm)
 /.config/bspwm/screenlocker/cache
-/.config/bspwm/screenlocker/wallpaper.png
+/.config/bspwm/screenlocker/wallpaper
 
 # Thunar custom actions
 !/.config/Thunar

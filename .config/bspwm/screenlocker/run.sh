@@ -60,7 +60,7 @@ done
 
 # Closes the wallpaper
 pkill -f "$HOME/.config/bspwm/screenlocker/wallpaper.sh ${OPTIONS}"
-pkill -f "qiv ${OPTIONS} ${HOME}/.config/bspwm/screenlocker/cache/wallpaper.png"
+pkill -f "qiv ${OPTIONS} ${HOME}/.config/bspwm/screenlocker/cache/wallpaper"
 sleep 0.4
 
 # Gets compton default attributes
