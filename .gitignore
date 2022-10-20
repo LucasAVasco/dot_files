@@ -34,6 +34,10 @@
 !/.config/polybar
 !/.config/sxhkd
 
+!/.config/coc
+/.config/coc/*
+!/.config/coc/ultisnips
+
 !/.local/bin
 !/.local/lib
 !/.local/share

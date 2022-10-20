@@ -1,4 +1,7 @@
 {
+	// Basic configurations
+	"suggest.noselect": true,
+
 	// Optimization
 	"suggest.timeout": 5000,
 	"signature.triggerSignatureWait": 1000,
@@ -6,6 +9,36 @@
 	// Prettier
 	"prettier.eslintIntegration": true,
 	"prettier.tabWidth": 4,
+
+	// Snippets
+	"snippet.statusText": "(On Snippet)",
+	"snippet.highlight": true,
+	"snippets.ultisnips.directories":[
+		"UltiSnips",
+		"ultisnips",
+		".vim/UltiSnips",
+		".vim/ultisnips"
+	],
+
+	// Extends filetype's snippets with other filetypes
+	"snippets.extends":{
+		"cpp": ["c"],
+		"javascriptreact": ["javascript"],
+		"typescript": ["javascript"]
+	},
+
+	// Coc lists configuration
+	"list.normalMappings": {
+		"t": "action:tabe",
+		"v": "action:vsplit",
+		"s": "action:split",
+		"d": "expr:GetDeleteAction"
+	},
+
+	"list.insertMappings": {
+		"<C-t>": "action:tabe",
+		"<C-w>": "command:wincmd k"
+	},
 
 	// Completion Labels
 	"suggest.completionItemKindLabels": {

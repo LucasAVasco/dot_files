@@ -1,58 +1,45 @@
-""""""""""";;; INIT.VIM ;;;"""""""""""
+""" Neo vim main configuration file.
+"
+" I didn't configure everything myself.
+" Many settings are default for vim and I just used them.
 
 
 
+" Common files configurations
 set encoding=utf-8
 set fileencoding=utf-8
-
 set backup
 set undofile
 
+" Mouse configurations
 set hidden
 set signcolumn=yes
 set mouse=a
 
+" Load the plugin files for specific file types
 filetype plugin on
-let mapleader = "\\"
 
-set number
-set cursorline
-
-set hls
-set hlsearch
-
+" Indentation
 set noexpandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" 'tab' character
 set list
 set listchars=tab:𝅙𝅙╎
 " Alternatives -> ⎜╏┇┋┆┊
 
+" Other configurations
+set number
+set cursorline
+set hlsearch
 
-""" Maps
-
-nmap <silent> <F1>  : tabp <CR>
-nmap <silent> <F2>  : tabn <CR>
- 
-nmap <silent> <F3>  : NERDTree <CR>
-nmap <silent> <F4>  : Files <CR>
- 
-nmap <C-F>          : %s///g<left><left><left>
-vmap <C-F>          : s///g<left><left><left>
- 
-nmap <S-TAB>        : '<,'>s/^\t//g <Enter> :/$\^ <Enter>
-nmap <TAB>          : '<,'>s/^/\t/g <Enter> :/$\^ <Enter>
-vmap <S-TAB>        : s/^\t//g <Enter> :/$\^ <Enter>
-vmap <TAB>          : s/^/\t/g <Enter> :/$\^ <Enter>
- 
-nmap <C-X>           <ESC>'<V'>
-nmap <silent> <C-C> : w !xclip -i -selection clipboard <Enter><Enter>
-vmap <C-C>            "+y
+" Maps
+source ~/.config/nvim/maps.vim
  
  
-""" Configure cursor appearance
+""" Configures cursor appearance
 
 if exists('$TMUX')
 	let &t_SI = "\ePtmux;\e\e[6 q\e\\"
@@ -63,9 +50,9 @@ else
 endif
 
 
+""" Vim-Plug configuration
 
-" Vim-Plug
-
+" When opening neo vim for the first time
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -120,33 +107,32 @@ Plug 'fenetikm/falcon'
 call plug#end()
 
 
-
-""" Configure color schemes
+""" Configures color schemes
 
 syntax enable
+
+colorscheme monokai
 
 set background=dark
 
 let g:afterglow_inherit_background=1
 
-" Fix terminal colors
+" Fixes terminal colors
 if exists('+termguicolors')
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	set termguicolors
 endif
 
-" Configure edge colorscheme
+" Configures edge colorscheme
 let g:edge_enable_italic = 0
 let g:edge_disable_italic_comment = 1
 
-" Configure sonokai colorscheme
+" Configures sonokai colorscheme
 let g:sonokai_enable_italic = 0
 let g:sonokai_disable_italic_comment = 1
 
-colorscheme monokai
-
-"" Fixing colorchemes
+" Fixes colorchemes
 if g:colors_name == "github"
 	autocmd VimEnter * :hi airline_tab guifg=#ffffff guibg=#6a737d
 endif
@@ -160,20 +146,23 @@ if g:colors_name == "onedarkpaco"
 endif
 
 
-""" Enable Italic
+" Enables italics in comments
 highlight Comment cterm=italic gui=italic
 
-" If don't works
+" If doesn't works
 set t_ZH=[3m
 set t_ZR=[23m
 
 
-" Change Whitespace foreground colors
+" Changes Whitespace foreground colors
 highlight Whitespace ctermfg=240 guifg=#585858
 
 
+" C like comments in json files
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
-""" Configure COC
+
+""" COC configurations
 
 let g:coc_global_extensions = [
 			\ 'coc-json',
@@ -186,154 +175,25 @@ let g:coc_global_extensions = [
 			\ 'coc-python'
 			\ ]
 
+source ~/.config/nvim/basic_coc_config.vim
+source ~/.config/nvim/other_coc_config.vim
 
-"" Functions
-
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	elseif (coc#rpc#ready())
-		call CocActionAsync('doHover')
-	else
-		execute '!' . &keywordprg . " " . expand('<cword>')
-	endif
-endfunction
+" Disables possible warning on startup for old vim/node version.
+" This setting is here because some features may behave incorrectly and
+" this option hiddes this.
+let g:coc_disable_startup_warning = 1
 
 
-"" Groups
-
-augroup mygroup
-autocmd!
-	" Setup formatexpr specified filetype(s)
-	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-
-	" Update signature help on jump placeholder
-	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-
-"" Maps
-
-" Tab trigger completion
-inoremap <silent><expr> <TAB>
-	\ pumvisible() ? coc#_select_confirm() :
-	\ coc#expandableOrJumpable() ?
-	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-
-" Change snippet
-let g:coc_snippet_next = '<tab>'
-
-" Tab trigger completion
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" C-Space trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Enter select the first completion
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-	\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Code diagnostic
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Show documentation
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" Highlight the symbol and its references when holding the cursor
-set updatetime=1000
-autocmd CursorHold * silent call CocActionAsync('highlight')
-autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
-
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-" Applying codeAction to the selected region
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer
-nmap <leader>ac  <Plug>(coc-codeaction)
-
-" Apply AutoFix to problem on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Use CTRL-S for selections ranges
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-
-"" Mappings for CoCList
-
-" Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-
-" Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-
-" Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-
-" Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-
-" Search workspace symbols
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-
-" Do default action for next item
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-
-" Do default action for previous item
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-
-" Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
-
-""" Configure vim-arduino
+""" Configures vim-arduino
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
 
 
+""" NerdCommenter
+let g:NERDSpaceDelims = 1
 
-""" Configure Syntastic
+
+""" Syntastic
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -347,13 +207,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ["pycodestyle"]
 
 
-""" Configure YouCompleteMe
+""" YouCompleteMe
 
 let g:ycm_show_diagnostics_ui = 0   " Turning off the default syntax correction
 
 
-
-""" Configure autopairs
+""" Autopairs
 
 let g:AutoPairsShortcutToggle = '<F5>'
 let g:AutoPairsShortcutFastWrap = ''
@@ -361,13 +220,12 @@ let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
 
 
-
-""" Configure Vim-airline
+""" Vim-airline
 
 " Fonts
 let g:airline_powerline_fonts = 1
 
-" Ailine
+" Airline
 let g:airline_right_sep = ''
 let g:airline_left_sep = ''
 let g:airline_right_alt_sep = ''
@@ -381,17 +239,18 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 
+" Vim-airline integration
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#show_coc_status = 1
 
 
-""" Configure NerdTree
+""" NerdTree
 
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeStatusline = ''
 
-
-
-""" Configure NerdTree git Plugin
+" NerdTree git Plugin
 
 let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeGitStatusShowIgnored = 1
@@ -410,8 +269,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 				\ }
 
 
-
-""" Configure Vim-Devicons
+""" Vim-devicons
 
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
@@ -420,49 +278,25 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
 
-
-""" Configure Easy-align
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+""" Easy-align
 
 let g:easy_align_ignore_groups = ['Comment', 'String']
 let g:easy_align_ignore_unmatched = 1
 
 
-
-""" Configure Tagbar
+""" Tagbar
 
 let g:tagbar_width = 30
 autocmd VimEnter * :TagbarToggle
 autocmd TabNewEntered * :TagbarToggle
 
-map <F8>     :TagbarToggle <CR>
-map <F6>     :TagbarOpen fj <CR>
 
-
-
-""" Configure winteract
-
-nmap gw      :InteractiveWindow<CR>
-
-
-
-""" Source '.vim/local_vimrc'
+""" Sources local vim configuration files
 
 if filereadable(".vim/local_vimrc")
 	source .vim/local_vimrc
 endif
 
-
-
-""" Source '.local_vimrc'
-
 if filereadable(".local_vimrc")
 	source .local_vimrc
 endif
-
-
-""" Useful commands
-
-" let g:syntastic_c_include_dirs = ['./libraries/MyLibs/include']
