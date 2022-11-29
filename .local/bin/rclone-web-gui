@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+case "$1" in
+	"init" | "" )
+		rclone rcd --rc-web-gui
+		;;
+
+	"close" )
+		pkill -f "^rclone rcd --rc-web-gui$"
+		;;
+
+	* )
+		echo "Command: 'rclone-web-gui'; unrecognized option: '$1'"
+		exit 1
+		;;
+esac
+
+
+# vi: nobackup

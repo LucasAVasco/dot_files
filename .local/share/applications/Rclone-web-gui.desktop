@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Rclone Web Gui
+Comment=Web Interface for Rclone
+Type=Application
+Exec=rclone-web-gui
+Icon=rclonetray-connected-tray
+Terminal=false
+StartupNotify=false
+Categories=Network;
