@@ -18,7 +18,10 @@ kdeconnect-app &
 kdeconnect-indicator &
 nm-applet &
 thunar --daemon &
+
+# Screen Saver
 xss-lock -- ~/.config/bspwm/screenlocker/run.sh &
+~/.config/bspwm/dpms.sh
 
 
 # BSPWM configurations
@@ -61,10 +64,13 @@ bspc rule -a Pavucontrol state=floating rectangle=850x400
 bspc rule -a Xfce4-appfinder state=floating rectangle=400x480+"$(($DISP_WIDTH/2 - 200))"+"$(($DISP_HEIGHT/2 - 240))"
 bspc rule -a brightness_popup_bspwm rectangle="400x100+$(($DISP_WIDTH-415))+41" center=off sticky=on focus=on
 bspc rule -a power_popup_bspwm rectangle="400x100+$(($DISP_WIDTH-415))+41" center=off sticky=on focus=on
+bspc rule -a screen_saver_popup_bspwm rectangle="400x155+$(($DISP_WIDTH-415))+41" center=off sticky=on focus=on
+
 
 # Init Plank
 bspc rule -a Plank layer=ABOVE
 ~/.config/plank/bspwm_plank/update.sh &
+
 
 # Conky above the screen
 bspc rule -a Conky-top layer=ABOVE
