@@ -53,7 +53,7 @@ bspc rule -a '*' center=on
 DISP_WIDTH=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f1)
 DISP_HEIGHT=$(xdpyinfo | grep dimensions | cut -d' ' -f7 | cut -d'x' -f2)
 
-for loop in 'Gufw.py' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-app-Base' 'arduinopc' 'Pdfarranger' 'Tor Browser' 'torbrowser-launcher' 'Java' 'Gdebi-gtk' 'Gnome-calculator' 'scrcpy' 'Clamtk' 'Catfish' 'Gtkhash' 'Software-properties-gtk' 'Org.gnome.Nautilus' 'Zotero:Toplevel' 'firetools' 'Protonvpn'; do
+for loop in 'Gufw.py' 'Nm-connection-editor' 'File-roller' 'Gpick' 'processing-app-Base' 'arduinopc' 'Pdfarranger' 'Tor Browser' 'torbrowser-launcher' 'Java' 'Gdebi-gtk' 'Gnome-calculator' 'scrcpy' 'Clamtk' 'Catfish' 'Gtkhash' 'Software-properties-gtk' 'Org.gnome.Nautilus' 'Zotero:Toplevel' 'firetools' 'Protonvpn' 'rclone-browser'; do
 	bspc rule -a "$loop" state=floating;
 done
 
