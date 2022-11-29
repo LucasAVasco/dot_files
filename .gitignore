@@ -55,6 +55,8 @@
 !/.local/bin/set-theme
 !/.local/bin/set-custom-screenlocker-wallpaper
 !/.local/bin/rclone-web-gui
+!/.local/bin/keeshare-backend
+!/.local/bin/keeshare-backend-popup
 
 .local/share/*
 !/.local/share/applications/
@@ -62,6 +64,7 @@
 !/.local/share/applications/close-kde-connect.desktop
 !/.local/share/applications/Rclone-web-gui-close.desktop
 !/.local/share/applications/Rclone-web-gui.desktop
+!/.local/share/applications/keeshare-backend-popup.desktop
 
 /.local/lib/python3.8
 

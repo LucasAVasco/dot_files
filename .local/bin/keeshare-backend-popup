@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+# Current state of Keeshare
+IS_BACKEND_RUNNING=''
+TITLE=''
+
+if pgrep -f "^rclone mount KeeShareConfig" > /dev/null ; then
+	IS_BACKEND_RUNNING=true
+	TEXT='Keeshare is running. Do you want to stop?'
+else
+	IS_BACKEND_RUNNING=false
+	TEXT='Keeshare is not running. Do you want to start?'
+fi
+
+
+# Popup
+if kdialog --title "KeeShare backend" --yesno "$TEXT" ; then
+
+	# Umounts if selected 'yes'
+	if [ $IS_BACKEND_RUNNING == true ]; then
+		keeshare-backend umount
+
+	# Mounts if selected 'yes'
+	else
+		keeshare-backend mount
+	fi
+fi
+
+
+# vi: nobackup

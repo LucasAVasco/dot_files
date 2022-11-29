@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=KeeShare backend popup
+Comment=Popup to start/stop keeshare backend
+Type=Application
+Exec=keeshare-backend-popup
+Icon=keepassxc
+Terminal=false
+StartupNotify=false
+Categories=Utility;Security;Qt;
