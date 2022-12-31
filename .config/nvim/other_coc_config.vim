@@ -23,7 +23,9 @@ endfunction
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
+" The second line is used for spelling autocomplete. Isn't a default coc-nvim configuration.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: Is_spelling() ? Set_spelling_var(0)."\<UP>\<C-N>\<LEFT>\<RIGHT>"
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Snippet navegation

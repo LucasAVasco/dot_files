@@ -25,6 +25,11 @@ nmap <C-X>           <ESC>'<V'>
 nmap <silent> <C-C> : w !xclip -i -selection clipboard <Enter><Enter>
 vmap <C-C>            "+y
 
+" Spelling
+imap <expr> <C-D> Is_spelling() ? "\<C-N>" : Set_spelling_var(1)."\<C-X>\<C-K>"
+imap <expr> <C-T> Is_spelling() ? "\<C-N>" : Set_spelling_var(1)."\<C-X>\<C-T>"
+imap <expr> <ESC> Set_spelling_var(0)."\<ESC>"
+
 
 """ Plugins
 

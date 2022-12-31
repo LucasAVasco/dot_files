@@ -85,6 +85,7 @@ Plug 'adelarsq/vim-matchit'
 Plug 'preservim/tagbar'
 Plug 'romgrk/winteract.vim'
 Plug 'AnotherProksY/ez-window'
+Plug 'preservim/vim-wordy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Colorschemes
@@ -295,6 +296,30 @@ let g:easy_align_ignore_unmatched = 1
 let g:tagbar_width = 30
 autocmd VimEnter * :TagbarToggle
 autocmd TabNewEntered * :TagbarToggle
+
+
+""" Spell checking
+setlocal spell spelllang=en_us
+set complete+=k
+set dictionary=spell
+
+" Local dictionaries
+set dictionary+=.vim/local_dictionary
+set dictionary+=.local_dictionary
+
+" Local thesaurus
+set thesaurus+=.vim/local_thesaurus
+set thesaurus+=.local_thesaurus
+
+let g:spelling_var = 0  " If spelling popup is active
+function Is_spelling()
+	return g:spelling_var
+endfunction
+
+function Set_spelling_var(value)
+	let g:spelling_var = a:value
+	return ''
+endfunction
 
 
 """ Sources local vim configuration files
