@@ -73,7 +73,8 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -200,18 +201,33 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 let g:NERDSpaceDelims = 1
 
 
+""" Ale
+
+let g:ale_open_list = 1
+let g:ale_list_window_size = 10
+
+let g:ale_floating_preview = 1
+let g:ale_detail_to_floating_preview = 1
+let g:ale_hover_to_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_warning_str = 'Warning'
+let g:ale_echo_msg_format = '   %linter%  -->  %s   %severity%'
+
+
 """ Syntastic
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_python_checkers = ["pycodestyle"]
+" let g:syntastic_python_checkers = ["pycodestyle"]
 
 
 """ YouCompleteMe
@@ -249,6 +265,7 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 " Vim-airline integration
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#coc#show_coc_status = 1
+let g:airline#extensions#ale#enabled = 1
 
 
 """ NerdTree
