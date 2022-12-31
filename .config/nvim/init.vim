@@ -10,6 +10,12 @@ set encoding=utf-8
 set fileencoding=utf-8
 set backup
 set undofile
+set swapfile
+
+silent !mkdir -p ~/.nvim/.backup_files/ ~/.nvim/.undo_files/ ~/.nvim/.swap_files/
+set backupdir=~/.nvim/.backup_files//
+set undodir=~/.nvim/.undo_files//
+set directory=~/.nvim/.swap_files//
 
 " Mouse configurations
 set hidden
