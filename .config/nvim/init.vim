@@ -186,18 +186,23 @@ let g:coc_global_extensions = [
 source ~/.config/nvim/basic_coc_config.vim
 source ~/.config/nvim/other_coc_config.vim
 
+" Prettier
+command! -nargs=0 CocPrettier :CocCommand prettier.forceFormatDocument
+
 " Disables possible warning on startup for old vim/node version.
 " This setting is here because some features may behave incorrectly and
-" this option hiddes this.
+" this option hides this.
 let g:coc_disable_startup_warning = 1
 
 
 """ Configures vim-arduino
+
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
 
 
 """ NerdCommenter
+
 let g:NERDSpaceDelims = 1
 
 
