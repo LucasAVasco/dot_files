@@ -87,6 +87,7 @@ Plug 'preservim/tagbar'
 Plug 'romgrk/winteract.vim'
 Plug 'AnotherProksY/ez-window'
 Plug 'preservim/vim-wordy'
+Plug 'LucasAVasco/nvim-grammar-comment'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Colorschemes
@@ -207,14 +208,16 @@ let g:NERDSpaceDelims = 1
 
 
 """ Ale
-
 let g:ale_open_list = 1
 let g:ale_list_window_size = 10
+" let g:ale_keep_list_window_open = 1
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_text_changed = 'never'
 
-let g:ale_floating_preview = 1
-let g:ale_detail_to_floating_preview = 1
-let g:ale_hover_to_floating_preview = 1
-let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+" let g:ale_floating_preview = 1
+" let g:ale_detail_to_floating_preview = 1
+" let g:ale_hover_to_floating_preview = 1
+" let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
 
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warning'
