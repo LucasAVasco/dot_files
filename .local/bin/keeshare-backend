@@ -1,17 +1,25 @@
 #!/bin/bash
 
 
+UMOUNT_KEESHARE()
+{
+	# Unmounts and removes the folder
+	fusermount -u ~/.keeshare/folder-to-sync
+	rm -r ~/.keeshare/folder-to-sync
+}
+
+
 case "$1" in
 	mount )
+		UMOUNT_KEESHARE
+
 		# Creates the folder and mounts
 		mkdir -p ~/.keeshare/folder-to-sync
 		rclone mount KeeShareConfig:/ ~/.keeshare/folder-to-sync &
 		;;
 
 	umount )
-		# Umounts and removes the folder
-		fusermount -u ~/.keeshare/folder-to-sync
-		rm -r ~/.keeshare/folder-to-sync
+		UMOUNT_KEESHARE
 		;;
 
 	* )
