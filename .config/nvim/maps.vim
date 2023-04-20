@@ -2,7 +2,7 @@
 let mapleader = "\\"
 
 
-" Navegation
+" Navigation
 nmap <silent> <F1>  : tabp <CR>
 nmap <silent> <F2>  : tabn <CR>
 nmap <silent> <F3>  : NERDTree <CR>
@@ -41,7 +41,7 @@ nmap <C-LeftMouse> <LeftMouse>\|\\
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Tagbar
+" Tag bar
 map <F8>     :TagbarToggle <CR>
 map <F6>     :TagbarOpen fj <CR>
 

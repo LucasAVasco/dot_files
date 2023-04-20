@@ -158,7 +158,7 @@ endif
 " Enables italics in comments
 highlight Comment cterm=italic gui=italic
 
-" If doesn't works
+" If it doesn't work
 set t_ZH=[3m
 set t_ZR=[23m
 
