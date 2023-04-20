@@ -26,6 +26,7 @@ if empty(glob('~/.vim/bundle/Vundle.vim/autoload/vundle.vim'))
 	" Fix code to better performance
 	!sed 's/git clone/git clone --depth 1/g' ~/.vim/bundle/Vundle.vim/autoload/vundle/installer.vim > ~/.vim/bundle/Vundle.vim/autoload/vundle/installer.second && mv ~/.vim/bundle/Vundle.vim/autoload/vundle/installer.second ~/.vim/bundle/Vundle.vim/autoload/vundle/installer.vim
 
+	!echo 'Remember to run ´:BundleInstall´'
 endif
 
 
