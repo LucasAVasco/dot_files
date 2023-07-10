@@ -40,7 +40,7 @@ configuration {
 }
 
 #element {
-	padding: 10 5 10 5;
+	padding: 10 30;
 	margin: 0 20 0 20;
 
 	border-radius: 30;

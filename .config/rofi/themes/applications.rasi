@@ -14,24 +14,25 @@ configuration {
 }
 
 #window {
-	background-color: rgba(0, 0, 0, 70%);
+	background-color: rgba(0, 0, 0, 0);
 
-	height:100%;
-	width:100%;
-	location:northwest;
-	anchor:northwest;
-	x-offset:0;
-	y-offset:0;
+	height: 80%;
+	width: 80%;
+	location: center;
+	anchor: center;
+	x-offset: 0;
+	y-offset: 0;
 
 }
 
 #inputbar {
 	background-color: rgb(230, 230, 230);
+	border-color: rgba(0, 0, 0, 50%);
 	text-color: rgb(0,0,0);
 
-	margin: 60 30% 60 30%;
+	margin: 0 20% 30 20%;
 	padding: 5 20 5 20;
-	border: 1;
+	border: 7;
 	border-radius: 50;
 }
 
@@ -48,9 +49,15 @@ configuration {
 }
 
 #listview {
-	margin: 40 100;
+	background-color: rgba(100, 100, 100, 80%);
+	margin: 10 10;
+	padding: 50;
+	border-radius: 50;
 	spacing: 10;
 	scrollbar: false;
+	lines: 4;
+	columns: 6;
+	fixed-columns: true;
 }
 
 #element {
@@ -63,12 +70,15 @@ configuration {
 }
 
 #element-icon {
-    size:                           70px;
+	/* icon size = width size - imputbar margin, border and padding - listview margin and padding */
+	/* There are 4 elements per column. So, divide by 4. This is the element size */
+	/* Divide by 2 because there are the element-text */
+	size: calc((80% - 20% - 40 - 14 - 20 - 100)/4 /2);
 }
 
 #element-text {
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
 }
 
 #element.selected.normal {

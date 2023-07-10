@@ -6,29 +6,32 @@ configuration {
 
 * {
 	background-color: rgba(0, 0, 0, 0%);
-	text-color: rgb(255,255,255);
+	text-color: rgb(100,100,100);
 }
 
 #window {
-	background-color: rgba(0, 0, 0, 80%);
+	background-color: rgba(200, 200, 200, 90%);
+	border-color: rgba(100, 100, 100, 90%);
 
-	height:100%;
-	width:30%;
-	location:northwest;
-	anchor:northwest;
-	x-offset:0;
-	y-offset:0;
+	height: calc(100% - 100px);
+	width: 30%;
+	border: 1;
+	border-radius: 30;
 
+	location: northwest;
+	anchor: northwest;
+	x-offset: 50;
+	y-offset: 50;
 }
 
 #inputbar {
-	background-color: rgba(150, 150, 150, 80%);
-	border-color: rgba(255, 255, 255, 80%);
+	background-color: rgb(230, 230, 230);
+	border-color: rgb(255, 255, 255);
 
-	margin: 60 20 30 20;
+	margin: 60 60 0 60;
 	padding: 5 20 5 20;
 	border: 1;
-	border-radius: 10;
+	border-radius: 20;
 }
 
 #entry {
@@ -44,23 +47,25 @@ configuration {
 }
 
 #listview {
+	background-color: rgba(240, 240, 240, 90%);
+
 	margin: 50;
 	padding: 20 10 20 10;
-	border-radius: 10;
+	border-radius: 20;
 
 	spacing: 2;
-	scrollbar: false;
+	scrollbar: true;
 
-	background-color: rgba(150, 150, 150, 30%);
+	columns: 1;
 }
 
 #element {
 	padding: 10 5 10 5;
 	border: 2;
-	border-radius: 5;
+	border-radius: 20;
 	border-color: rgba(0, 0, 0, 0%);
 
-	horizontal-align: 0.5;
+	text-color: rgb(100,100,100);
 }
 
 #element-text {
@@ -68,7 +73,7 @@ configuration {
 }
 
 #element.selected.normal {
-	background-color: rgba(255, 255, 255, 30%);
+	background-color: rgba(255, 255, 255, 95%);
 }
 
 #element.normal.urgent {

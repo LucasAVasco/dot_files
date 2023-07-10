@@ -1,6 +1,6 @@
 configuration {
 	columns: 6;
-	font: "NotoSans Nerd Font 20";
+	font: "NotoSans Nerd Font 15";
 	show-icons: true;
 	show-text: false;
 }
@@ -11,71 +11,69 @@ configuration {
 }
 
 #window {
-	height:60%;
-	width:100%;
-	location:southwest;
-	anchor:southwest;
-	x-offset:0;
-	y-offset:0;
+	height: 50%;
+	width: 80%;
+
+	location: southwest;
+	anchor: southwest;
+	x-offset: 10%;
+	y-offset: -20;
 }
 
 #inputbar {
-	background-color: rgba(0, 0, 0, 40%);
-
-	margin: 60 30% 30 30%;
-	padding: 15 20 15 20;
-	border: 1;
-	border-radius: 60;
-}
-
-#entry {
 	background-color: rgb(230, 230, 230);
-	border-radius: 60;
-	padding: 20;
+	border-color: rgba(0, 0, 0, 50%);
+	text-color: rgb(0,0,0);
+
+	margin: 0 20% 30 20%;
+	padding: 10 30 10 30;
+	border: 7;
+	border-radius: 50;
 }
 
 #case-indicator {
 	enabled: false;
 }
 
-#prompt {
-	enabled: false;
-}
-
 #listview {
-	background-color: rgba(0, 0, 0, 80%);
+	background-color: rgba(100, 100, 100, 0%);
 
 	padding: 20 50 20 50;
-	horizontal-align: 0.5;
+	border-radius: 60;
 
+	lines: 1;
+	columns: 6;
 	spacing: 10;
 	scrollbar: false;
 }
 
 #element {
+	background-color: rgba(80, 80, 80, 90%);
+
 	padding: 10 5 10 5;
 	border: 2;
-	border-radius: 20;
+	border-radius: 40;
 	border-color: rgba(0, 0, 0, 0%);
 
+	expand: true;
 	text-color: rgba(0, 0, 0, 0%);
-	font: "NotoSans Nerd Font 100";
+	font: "NotoSans Nerd Font 120";
 
 	orientation: vertical;
 }
 
 #element-icon {
-	size: 170;
-	horizontal-align: 0.5;
+	/* icon size = width size - imputbar margin, border and padding - listview margin and padding - element border and padding */
+	/* the '- 120' is a security value */
+	size: calc(50% - 30 - 20 - 14 - 40 - 20 - 4 - 120);
 }
 
 #element-text {
 	enabled: false;
-
 }
 
 #element.selected.normal {
-	background-color: rgba(255, 255, 255, 30%);
+	background-color: rgba(120, 120, 120, 90%);
 }
 
 #element.normal.urgent {

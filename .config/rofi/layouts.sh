@@ -14,7 +14,7 @@ for loop in $LAYOUTS; do
 done
 
 # Display Rofi
-SELECTED_LAYOUT=$(echo -en "$CONTENT" | rofi -theme themes/bspc-layouts.rasi -p 'Layouts:' -dmenu)
+SELECTED_LAYOUT=$(echo -en "$CONTENT" | rofi -theme themes/bspc-layouts.rasi -p 'Layout: ' -dmenu)
 
 # Change to SELECTED_LAYOUT
 if [ "$SELECTED_LAYOUT" != '' ]; then
