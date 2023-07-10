@@ -102,4 +102,32 @@
 	<patterns>*</patterns>
 	<image-files/>
 </action>
+<action>
+	<icon>data-information</icon>
+	<name>Remove metadata</name>
+	<unique-id>1688445336640407-1</unique-id>
+	<command>mat2 %F</command>
+	<description>Attempts to remove all metadata (some may remain)</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>data-information</icon>
+	<name>Remove some metadata</name>
+	<unique-id>1688445681124843-2</unique-id>
+	<command>mat2 -L %F</command>
+	<description>Attempts to remove all metadata. Less loss in quality (some may remain)</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
 </actions>
