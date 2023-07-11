@@ -38,25 +38,9 @@
 /.config/coc/*
 !/.config/coc/ultisnips
 
-!/.local/bin
+!/.local/dotfiles-bin
 !/.local/lib
 !/.local/share
-
-.local/bin/*
-
-
-# User executables
-!/.local/bin/bspc-layout
-!/.local/bin/chdesk
-!/.local/bin/close-all-nodes
-!/.local/bin/show-all-nodes
-!/.local/bin/kill-all-nodes
-!/.local/bin/kdeconnect-close
-!/.local/bin/set-theme
-!/.local/bin/set-custom-screenlocker-wallpaper
-!/.local/bin/rclone-web-gui
-!/.local/bin/keeshare-backend
-!/.local/bin/keeshare-backend-popup
 
 .local/share/*
 !/.local/share/applications/

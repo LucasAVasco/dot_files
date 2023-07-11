@@ -82,7 +82,7 @@ test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Add local bin path
-PATH+=:~/.local/bin
+PATH+=:~/.local/dotfiles-bin/:~/.local/bin
 
 # Tmux and vim colors
 export TERM=xterm-256color

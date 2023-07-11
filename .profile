@@ -26,6 +26,10 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/.local/dotfiles-bin" ]; then
+    PATH="$HOME/.local/dotfiles-bin:$PATH"
+fi
+
 # Change the 'DESKTOP_SESSION' enviroment variable to "gnome" if in bspwm
 if [ "$DESKTOP_SESSION" == "bspwm" ]; then
 	export DESKTOP_SESSION="GNOME"
