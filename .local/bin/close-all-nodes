@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Close all node of bspwm
+
+# Close all nodes of bspwm
 for loop in $(bspc query -N); do
 	bspc node $loop -c
 done

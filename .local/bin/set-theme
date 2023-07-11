@@ -1,31 +1,62 @@
 #!/bin/bash
 
 
+# Show help message
+HELP_MSG()
+{
+	echo -e '\nusage: set-theme [command] <parameters>\n'
+	echo -e 'Commands:\n'
+
+	echo '  -g | --gtk <name> - Set the current GTK theme to <name>'
+	echo '  -i | --icon <name> - Set the current icon theme to <name>'
+	echo '  -c | --cursor <name> - Set the current cursor theme to <name>'
+	echo '  --fix-cursor - Fix the cursor theme (some login manager can change it)'
+	echo '  help | -h | --help - show this message'
+
+	echo -e '\n\nError codes:'
+	echo '  1: unrecognized option'
+	echo '  2: wrong number of parameters'
+}
+
+
+# Check the parameters number
+#
+# $1: Current number of parameters
+# $2: Correct number of parameters
+NUMBER_ERROR () {
+	if [[ "$1" != "$2" ]]; then
+		echo -e "\nERROR! Wrong number of parameters.\n"
+		exit 2
+	fi
+}
+
+
 # Change a file attribute
+#
+# $1: file path
+# $2: Attribute pathern
+# $3: Attribute value
 CHANGE_FILE_ATTRIBUTE()
 {
-	# $1: file path
-	# $2: Attribute pathern
-	# $3: Attribute Value
-
 	# Change the file attribute
 	sed -i s/"${2}.*"/"${2}=${3}"/ "$1"
 }
 
 
 # Get a file attribute
+#
+# $1: File path
+# $2: Attribute name
 GET_FILE_ATTRIBUTE()
 {
-	# $1: File path
-	# $2: Attribute name
-
 	cat "$1" | awk "/$2/" | sed -n 1p | sed 's/.*=//g'
 }
 
 
 # Main code
 case "$1" in
-	'-g' | '--gtk' )
+	# Set GTK theme
+	'-g' | '--gtk' ) NUMBER_ERROR $# 2
 		# GTK 2
 		CHANGE_FILE_ATTRIBUTE ~/.gtkrc-2.0 'gtk-theme-name' "\"$2\""
 
@@ -36,7 +67,8 @@ case "$1" in
 		gsettings set org.gnome.desktop.interface gtk-theme "$2"
 		;;
 
-	'-i' | '--icon')
+	# Set icon theme
+	'-i' | '--icon') NUMBER_ERROR $# 2
 		# GTK 2
 		CHANGE_FILE_ATTRIBUTE ~/.gtkrc-2.0 'gtk-icon-theme-name' "\"$2\""
 
@@ -50,7 +82,8 @@ case "$1" in
 		gsettings set org.gnome.desktop.interface icon-theme "$2"
 		;;
 
-	'-c' | '--cursor' )
+	# Set cursor theme
+	'-c' | '--cursor' ) NUMBER_ERROR $# 2
 		# GTK 2
 		CHANGE_FILE_ATTRIBUTE ~/.gtkrc-2.0 'gtk-cursor-theme-name' "\"$2\""
 
@@ -71,10 +104,25 @@ case "$1" in
 		xsetroot -cursor_name left_ptr
 		;;
 
-	'--fix-cursor' )
+	# Fix cursor theme. Some login managers can change the cursor theme.
+	# This option is needed to restore the cursor to the correct one.
+	'--fix-cursor' ) NUMBER_ERROR $# 1
 		# X server
 		echo "Xcursor.theme: $(GET_FILE_ATTRIBUTE ~/.config/gtk-3.0/settings.ini gtk-cursor-theme-name)" | xrdb
 		xsetroot -cursor_name left_ptr
+		;;
+
+	# Show help message
+	help | -h | --help ) NUMBER_ERROR $# 1
+		HELP_MSG;;
+
+	# Error because there are no parameters
+	"" ) NUMBER_ERROR $# 1;;
+
+	# If there is no compatible option
+	* )
+		echo "Command: 'bspc-layout'; unrecognized option: '$1'"
+		exit 1
 		;;
 esac
 

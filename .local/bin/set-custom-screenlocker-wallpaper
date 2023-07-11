@@ -1,11 +1,21 @@
 #!/bin/bash
 
 
+# If there are not enough parameters, do nothing
+if [[ $# != 1 ]]; then
+	echo -e '\nWrong number of parameters!'
+	exit 1
+fi
+
 # Removes the cache directory to update data
 rm -r ~/.config/bspwm/screenlocker/cache 2> /dev/null
 
 # Switches the wallpaper
-cp "$1" ~/.config/bspwm/screenlocker/wallpaper
+cp "$1" ~/.config/bspwm/screenlocker/wallpaper 2> /dev/null || \
+	{
+		echo -e '\nCan not set the new wallpaper! Check the file.'
+		exit 2
+	}
 
 
 # vi: nobackup

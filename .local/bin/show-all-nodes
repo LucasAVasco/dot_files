@@ -1,14 +1,17 @@
 #!/bin/bash
 
-# Get the nodes
+
+# Gets nodes
 if [ "$1" == '-a' ]; then
+	# Only current desktop
 	NODES=$(bspc query -N)
 
 else
+	# All desktops
 	NODES=$(bspc query -N -d)
 fi
 
-# Show all nodes of bspwm
+# Shows nodes of bspwm
 for loop in $NODES; do
 	IS_HIDDEN=$(bspc query -T -n $loop | sed 's/,/\n/g' | awk '/hidden/' | sed -n '1p' | cut -d':' -f2)
 

@@ -8,40 +8,80 @@ BSPC_LAYOUTS_PATH=~/.config/bspwm/layouts
 BSPC_LAYOUTS_VAR=~/.local/var/bspc_layout_var
 
 
+# Show help message
+HELP_MSG()
+{
+	echo -e '\nusage: bspc-layout [command]\n'
+	echo -e 'Commands:\n'
 
-# Define the operation
-case $1 in
-	# List the layouts
-	ls | list )
+	echo '  ls | list - list the available layouts'
+	echo '  change <name> - change to the layout with the label <name>'
+	echo '  help | -h | --help - show this message'
+
+	echo -e '\n\nError codes:'
+	echo '  1: unrecognized option'
+	echo '  2: wrong number of parameters'
+	echo '  3: non-existing layout'
+}
+
+
+# Check the parameters number
+#
+# $1: Current number of parameters
+# $2: Correct number of parameters
+NUMBER_ERROR () {
+	if [[ "$1" != "$2" ]]; then
+		echo -e "\nERROR! Wrong number of parameters.\n"
+		exit 2
+	fi
+}
+
+
+# Check if a layout exists
+#
+# $1: Layout name (not the path)
+LAYOUT_EXIST()
+{
+	ls "$BSPC_LAYOUTS_PATH/$1" > /dev/null 2> /dev/null && echo true || echo false
+}
+
+
+case "$1" in
+	# List layouts
+	ls | list ) NUMBER_ERROR $# 1
 		ls $BSPC_LAYOUTS_PATH;;
 
-	# Change to the $2 layout
-	change )
-		HAS_LAYOUT='false'
+	# Change to $2 layout
+	change ) NUMBER_ERROR $# 2
+		# If the layout exists
+		if [ "$(LAYOUT_EXIST $2)" ]; then
+			# Source the files
+			source "$BSPC_FUNCTIONS_LIB"
+			source "${BSPC_LAYOUTS_PATH}/$2"
 
-		for loop in $(ls $BSPC_LAYOUTS_PATH); do
-			if [ $2 == $loop ]; then
-				# Change the 'HAS_LAYOUT' variable
-				HAS_LAYOUT='true'
+			# Execute the change
+			UPDATE_LEAFS
+			LAYOUT_CHANGE
 
-				# Source the files
-				source $BSPC_FUNCTIONS_LIB
-				source ${BSPC_LAYOUTS_PATH}/$2
-
-				# Execute the change
-				UPDATE_LEAFS
-				LAYOUT_CHANGE
-
-				break
-			fi
-
-		done
-
-		# If there aren't the $2 layout
-		if [ "$HAS_LAYOUT" == 'false' ]; then
-			echo "There aren't this layout. Use 'bspc-layout ls' to view the available layouts."
+		# If there isn't the $2 layout
+		else
+			echo "There aren't this layout! Use 'bspc-layout ls' to view the available layouts."
+			exit 3
 		fi
 
+		;;
+
+	# Show help message
+	help | -h | --help ) NUMBER_ERROR $# 1
+		HELP_MSG;;
+
+	# Error because there are no parameters
+	"" ) NUMBER_ERROR $# 1;;
+
+	# If there is no compatible option
+	* )
+		echo "Command: 'bspc-layout'; unrecognized option: '$1'"
+		exit 1
 		;;
 esac
 
