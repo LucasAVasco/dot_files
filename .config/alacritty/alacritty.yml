@@ -2,6 +2,7 @@
 
 
 window:
+  opacity: 0.93
   dimensions:
     columns: 70
     lines: 20
@@ -26,5 +27,3 @@ bell:
   animation: EaseOutExpo
   duration: 0
   color: '#ffffff'
-
-background_opacity: 0.93
