@@ -13,10 +13,10 @@ nmap <C-F>          : %s///g<left><left><left>
 vmap <C-F>          : s///g<left><left><left>
 
 " Indentation
-nmap <S-TAB>        : '<,'>s/^\t//g <Enter> :/$\^ <Enter>
-nmap <TAB>          : '<,'>s/^/\t/g <Enter> :/$\^ <Enter>
-vmap <S-TAB>        : s/^\t//g <Enter> :/$\^ <Enter>
-vmap <TAB>          : s/^/\t/g <Enter> :/$\^ <Enter>
+nmap <S-TAB>        <ESC>'<V'><
+nmap <TAB>          <ESC>'<V'>>
+vmap <S-TAB>        <
+vmap <TAB>          >
  
 " Select the last visual selection
 nmap <C-X>           <ESC>'<V'>
