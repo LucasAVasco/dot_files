@@ -13,11 +13,11 @@ super + 1
 
 # Rofi windows
 super + 2
-	rofi -config ~/.config/rofi/windows.rasi -show window &
+	~/.config/rofi/windows.sh &
 
 # Rofi Applications
 super + 3
-	rofi -config ~/.config/rofi/applications.rasi -show drun &
+	~/.config/rofi/applications.sh &
 
 # Rofi chdesk
 super + 4

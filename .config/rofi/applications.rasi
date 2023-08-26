@@ -1,8 +1,6 @@
 configuration {
 
 	modi: "drun";
-
-	theme: "themes/applications";
 }
 
 
