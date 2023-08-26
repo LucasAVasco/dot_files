@@ -2,4 +2,4 @@
 
 
 mkdir -p ~/.fonts
-cp ~/'.backup/Custom Polybar Icons Font.ttf' ~/.fonts/
+cp ~/'.extra-files/Custom Polybar Icons Font.ttf' ~/.fonts/
