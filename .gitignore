@@ -39,7 +39,7 @@
 !/.config/coc/ultisnips
 
 !/.local/dotfiles-bin
-!/.local/lib
+!/.local/dotfiles-lib
 !/.local/share
 
 .local/share/*
@@ -49,8 +49,6 @@
 !/.local/share/applications/Rclone-web-gui-close.desktop
 !/.local/share/applications/Rclone-web-gui.desktop
 !/.local/share/applications/keeshare-backend-popup.desktop
-
-/.local/lib/python3.8
 
 
 # Zorin os theme modified to bspwm
