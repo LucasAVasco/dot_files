@@ -90,8 +90,8 @@ export TERM=xterm-256color
 
 
 # Source Colorscheme
-source $HOME'/.bash/colorschemes/minimal'
+source $HOME'/.bash/colorschemes/polygon'
 
 
 # Source Prompt
-source $HOME'/.bash/prompts/minimal.sh'
+source $HOME'/.bash/prompts/minimal-polygon.sh'
