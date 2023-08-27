@@ -61,7 +61,6 @@ configuration {
 	border-radius: 20;
 	orientation: vertical;
 	border-color: rgba(0, 0, 0, 0%);
-	text-color: rgb(255,255,255);
 }
 
 #element-icon {
@@ -74,6 +73,7 @@ configuration {
 #element-text {
 	horizontal-align: 0.5;
 	vertical-align: 0.5;
+	text-color: rgb(255,255,255);
 }
 
 #element.selected.normal {
