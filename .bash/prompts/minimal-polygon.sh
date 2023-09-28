@@ -43,7 +43,7 @@ PROMPT_REFRESH()
 \[\033[38;5;${CHAR_COLOR_3}m\] \w \
 \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_3}m\]\
 ${ERROR_PROMPT}\
-\n\
+\n\n\
 \[\033[48;5;${BACK_COLOR_5}m\]\[\033[38;5;${CHAR_COLOR_5}m\] \$\
 \[$(tput sgr0)\]\[\033[38;5;${BACK_COLOR_5}m\]  \
 \[$(tput sgr0)\]\
