@@ -56,6 +56,34 @@ else
 endif
 
 
+""" Cursor motion
+function SetProse(bool)
+	" Treats file like prose
+	if a:bool == "y"
+		nmap <Up> g<Up>
+		vmap <Up> g<Up>
+		nmap <Down> g<Down>
+		vmap <Down> g<Down>
+
+		set linebreak
+
+	" Treats file like code
+	elseif a:bool == "n"
+		nunmap <Up>
+		vunmap <Up>
+		nunmap <Down>
+		vunmap <Down>
+
+		set nolinebreak
+
+	else
+		echo "There is no such option!"
+	endif
+endfunction
+
+command! -nargs=1 SetProse call SetProse(<q-args>)
+
+
 """ Vim-Plug configuration
 
 " When opening neo vim for the first time
