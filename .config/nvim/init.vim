@@ -327,7 +327,7 @@ autocmd TabNewEntered * :TagbarToggle
 
 
 """ Spell checking
-setlocal spell spelllang=en_us
+set spelllang=en_us
 set complete+=k
 set dictionary=spell
 
