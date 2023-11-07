@@ -130,6 +130,7 @@ Plug 'AnotherProksY/ez-window'
 Plug 'preservim/vim-wordy'
 Plug 'LucasAVasco/nvim-grammar-comment'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
 " Colorschemes
 Plug 'vim-airline/vim-airline-themes'
@@ -315,6 +316,12 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#coc#show_coc_status = 1
 let g:airline#extensions#ale#enabled = 1
+
+
+""" Codeium
+set statusline+=\{…\}%3{codeium#GetStatusString()}
+imap <M-.>   <Cmd>call codeium#CycleCompletions(1)<CR>
+imap <M-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 
 
 """ NerdTree
