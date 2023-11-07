@@ -65,6 +65,11 @@ function SetProse(bool)
 		nmap <Down> g<Down>
 		vmap <Down> g<Down>
 
+		nmap j gj
+		vmap j gj
+		nmap k gk
+		vmap k gk
+
 		set linebreak
 
 	" Treats file like code
@@ -73,6 +78,11 @@ function SetProse(bool)
 		vunmap <Up>
 		nunmap <Down>
 		vunmap <Down>
+
+		nunmap j
+		vunmap j
+		nunmap k
+		vunmap k
 
 		set nolinebreak
 
