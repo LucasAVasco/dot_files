@@ -360,7 +360,8 @@ let g:webdevicons_enable_airline_statusline = 1
 
 """ Easy-align
 
-let g:easy_align_ignore_groups = ['Comment', 'String']
+" let g:easy_align_ignore_groups = ['Comment', 'String']
+let g:easy_align_ignore_groups = []
 let g:easy_align_ignore_unmatched = 1
 
 
