@@ -282,6 +282,8 @@ let g:NERDSpaceDelims = 1
 
 
 """ Ale
+
+let g:ale_linters = {"cpp": ["ccls"], "c": ["ccls"]}
 let g:ale_open_list = 1
 let g:ale_list_window_size = 10
 " let g:ale_keep_list_window_open = 1
@@ -298,23 +300,56 @@ let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '   %linter%  -->  %s   %severity%'
 
 
-""" Syntastic
+" C and C++
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+let g:stdc_version = get(g:, "stdc_version", "gnu17")
+let g:stdcpp_version = get(g:, "stdcpp_version", "gnu++17")
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+let $STDC_VERSION=g:stdc_version
+let $STDCPP_VERSION=g:stdcpp_version
 
-" let g:syntastic_python_checkers = ["pycodestyle"]
+" Standart send to ccls
+let g:std_to_ccls = get(g:, "std_to_ccls", g:stdcpp_version)
 
+if index(["C", "cpp", "cc", "cxx", "c++", "H", "hpp", "hh", "hxx", "h++"], g:first_file_extension) >= 0
+	" Is a 'c++' file
+	let g:std_to_ccls = g:stdcpp_version
 
-""" YouCompleteMe
+else
+	" Is a 'c' file
+	let g:std_to_ccls = g:stdc_version
+endif
 
-let g:ycm_show_diagnostics_ui = 0   " Turning off the default syntax correction
+let $STD_TO_CCLS=g:std_to_ccls
+
+" libstdc++ version
+let g:libstdcpp_version = glob("/usr/include/c++/*")
+let g:libstdcpp_version = substitute(g:libstdcpp_version, ".*/", '', 'g')  " Removes /usr/include/c++/
+let $LIBSTDCPP_VERSION=g:libstdcpp_version
+
+let g:ale_c_ccls_init_options = {
+			\	"cache": {
+			\		"directory": "/tmp/ccls-cache1",
+			\	},
+			\	"clang": {
+			\		"extraArgs": [
+			\			"-std=" . g:stdc_version
+			\		]
+			\	}
+			\ }
+
+let g:ale_cpp_ccls_init_options = {
+			\	"cache": {
+			\		"directory": "/tmp/ccls-cache1",
+			\	},
+			\	"clang": {
+			\		"extraArgs": [
+			\			"-std=" . g:stdcpp_version,
+			\			"-I/usr/include/c++/" . g:libstdcpp_version,
+			\			"-I/usr/include/x86_64-linux-gnu/c++/" . g:libstdcpp_version
+			\		]
+			\	}
+			\ }
 
 
 """ Autopairs

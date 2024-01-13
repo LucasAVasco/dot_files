@@ -97,6 +97,14 @@
 					"directory": "/tmp/ccls-cache"
 				},
 
+				"clang": {
+					"extraArgs": [
+						"-std=${env:STD_TO_CCLS}",
+						"-I/usr/include/c++/${env:LIBSTDCPP_VERSION}/",
+						"-I/usr/include/x86_64-linux-gnu/c++/${env:LIBSTDCPP_VERSION}/"
+					]
+				},
+
 				"client": {
 					"snippetSupport":true
 				}
