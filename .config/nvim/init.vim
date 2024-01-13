@@ -4,8 +4,32 @@
 " Many settings are default for vim and I just used them.
 
 
+" Source local vim configuration files
+function! s:source_local_config()
+	if filereadable(".vim/local_vimrc")
+		source .vim/local_vimrc
+	endif
 
-" Common files configurations
+	if filereadable(".local_vimrc")
+		source .local_vimrc
+	endif
+endfunction
+
+
+""" Common information
+let g:first_file_extension = expand("%:e")
+
+
+""" Sources local vim configuration files
+
+let g:before_vimrc = v:true
+let g:after_vimrc = v:false
+
+call s:source_local_config()
+
+
+""" Common files configurations
+
 set encoding=utf-8
 set fileencoding=utf-8
 set backup
@@ -398,10 +422,7 @@ endfunction
 
 """ Sources local vim configuration files
 
-if filereadable(".vim/local_vimrc")
-	source .vim/local_vimrc
-endif
+let g:before_vimrc = v:false
+let g:after_vimrc = v:true
 
-if filereadable(".local_vimrc")
-	source .local_vimrc
-endif
+call s:source_local_config()
