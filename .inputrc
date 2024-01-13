@@ -1,0 +1,17 @@
+# GDB keybinds
+$if gdb
+	# INSERT
+	"\e[2~": "tui disable\n"
+
+	# HOME
+	"\e[1~": "layout prev\n"
+
+	# END
+	"\e[4~": "layout next\n"
+
+	# F1, F2, F3, F4
+	"\eOP": "layout src\n"
+	"\eOQ": "layout asm\n"
+	"\eOR": "layout regs\n"
+	"\eOS": "layout split\n"
+$endif

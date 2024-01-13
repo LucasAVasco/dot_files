@@ -84,6 +84,7 @@
 !/.profile
 !/.config/rofi/config.rasi
 !/.config/compton.conf
+!/.inputrc
 
 
 # Gitattributes
