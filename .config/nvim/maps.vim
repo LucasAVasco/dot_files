@@ -30,6 +30,9 @@ imap <expr> <C-D> Is_spelling() ? "\<C-N>" : Set_spelling_var(1)."\<C-X>\<C-K>"
 imap <expr> <C-T> Is_spelling() ? "\<C-N>" : Set_spelling_var(1)."\<C-X>\<C-T>"
 imap <expr> <ESC> Set_spelling_var(0)."\<ESC>"
 
+" Loclist
+nmap <silent> <F6> :lprev <CR>
+nmap <silent> <F7> :lnext <CR>
 
 """ Plugins
 
@@ -42,8 +45,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Tag bar
-map <F8>     :TagbarToggle <CR>
-map <F6>     :TagbarOpen fj <CR>
+map <F9>     :TagbarToggle <CR>
+map <F8>     :TagbarOpen fj <CR>
 
 " Winteract
 nmap gw      :InteractiveWindow<CR>
