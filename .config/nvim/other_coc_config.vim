@@ -2,7 +2,7 @@
 " 'https://github.com/neoclide/coc.nvim/' and other sites.
 
 
-" Signature Help of function 
+" Signature Help of function
 set updatetime=1000
 autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 

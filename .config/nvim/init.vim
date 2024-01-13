@@ -17,6 +17,7 @@ endfunction
 
 
 """ Common information
+
 let g:first_file_extension = expand("%:e")
 
 
@@ -55,7 +56,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" 'tab' character
+" 'Tab' character
 set list
 set listchars=tab:𝅙𝅙╎
 " Alternatives -> ⎜╏┇┋┆┊
@@ -67,8 +68,8 @@ set hlsearch
 
 " Maps
 source ~/.config/nvim/maps.vim
- 
- 
+
+
 """ Configures cursor appearance
 
 if exists('$TMUX')
@@ -81,6 +82,7 @@ endif
 
 
 """ Cursor motion
+
 function SetProse(bool)
 	" Treats file like prose
 	if a:bool == "y"
@@ -120,7 +122,7 @@ command! -nargs=1 SetProse call SetProse(<q-args>)
 
 """ Vim-Plug configuration
 
-" When opening neo vim for the first time
+" When opening Neovim for the first time
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	!sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
@@ -233,7 +235,7 @@ set t_ZR=[23m
 highlight Whitespace ctermfg=240 guifg=#585858
 
 
-" Whitespace errors
+""" Whitespace errors
 
 highlight WhitespaceError ctermbg=red guibg=red
 autocmd BufWinEnter * match WhitespaceError /\s\+$/     " Highlight trailing whitespace
@@ -241,7 +243,8 @@ autocmd BufWinEnter * 2match WhitespaceError /\ \+\t/   " Highlight spaces befor
 autocmd BufWinEnter * 3match WhitespaceError /\n\+\%$/  " Highlight newline at end of file
 
 
-" C like comments in JSON files
+""" C like comments in JSON files
+
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
@@ -300,7 +303,7 @@ let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '   %linter%  -->  %s   %severity%'
 
 
-" C and C++
+""" C and C++
 
 let g:stdc_version = get(g:, "stdc_version", "gnu17")
 let g:stdcpp_version = get(g:, "stdcpp_version", "gnu++17")
@@ -386,6 +389,7 @@ let g:airline#extensions#ale#enabled = 1
 
 
 """ Codeium
+
 set statusline+=\{…\}%3{codeium#GetStatusString()}
 imap <M-.>   <Cmd>call codeium#CycleCompletions(1)<CR>
 imap <M-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
@@ -440,6 +444,7 @@ autocmd TabNewEntered * :TagbarToggle
 
 
 """ Spell checking
+
 set spelllang=en_us
 set complete+=k
 set dictionary=spell

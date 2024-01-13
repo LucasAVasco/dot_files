@@ -7,7 +7,7 @@ nmap <silent> <F1>  : tabp <CR>
 nmap <silent> <F2>  : tabn <CR>
 nmap <silent> <F3>  : NERDTree <CR>
 nmap <silent> <F4>  : Files <CR>
- 
+
 " Replacement
 nmap <C-F>          : %s///g<left><left><left>
 vmap <C-F>          : s///g<left><left><left>
@@ -17,7 +17,7 @@ nmap <S-TAB>        <ESC>'<V'><
 nmap <TAB>          <ESC>'<V'>>
 vmap <S-TAB>        <
 vmap <TAB>          >
- 
+
 " Select the last visual selection
 nmap <C-X>           <ESC>'<V'>
 
@@ -33,6 +33,7 @@ imap <expr> <ESC> Set_spelling_var(0)."\<ESC>"
 " Loclist
 nmap <silent> <F6> :lprev <CR>
 nmap <silent> <F7> :lnext <CR>
+
 
 """ Plugins
 
