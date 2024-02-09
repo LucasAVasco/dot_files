@@ -2,7 +2,7 @@
 
 
 window:
-  opacity: 0.7
+  opacity: 0.75
   dimensions:
     columns: 70
     lines: 20
