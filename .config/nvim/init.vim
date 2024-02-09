@@ -240,7 +240,6 @@ highlight Whitespace ctermfg=240 guifg=#585858
 highlight WhitespaceError ctermbg=red guibg=red
 autocmd BufWinEnter * match WhitespaceError /\s\+$/     " Highlight trailing whitespace
 autocmd BufWinEnter * 2match WhitespaceError /\ \+\t/   " Highlight spaces before tabs
-autocmd BufWinEnter * 3match WhitespaceError /\n\+\%$/  " Highlight newline at end of file
 
 
 """ C like comments in JSON files
