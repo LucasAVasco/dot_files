@@ -113,7 +113,6 @@ super + p
 
 ############## System ##################
 
-
 # Clear the clipboard
 super + e
 	echo '' | xclip -i -sel primary ; echo '' | xclip -i -sel secondary ; echo '' | xclip -i -sel clipboard
@@ -123,7 +122,7 @@ ctrl + alt + l
 	~/.config/sxhkd/lockscreen.sh &
 
 # Quit and reboot bspwm
-shift + alt + {q,r}
+super + shift + alt + {q,r}
 	bspc {quit,wm -r} &
 
 # suspend, reboot and poweroff
