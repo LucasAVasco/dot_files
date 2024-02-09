@@ -313,13 +313,13 @@ let $STDCPP_VERSION=g:stdcpp_version
 " Standart send to ccls
 let g:std_to_ccls = get(g:, "std_to_ccls", g:stdcpp_version)
 
-if index(["C", "cpp", "cc", "cxx", "c++", "H", "hpp", "hh", "hxx", "h++"], g:first_file_extension) >= 0
-	" Is a 'c++' file
-	let g:std_to_ccls = g:stdcpp_version
-
-else
+if index(["c", "h"], g:first_file_extension) >= 0
 	" Is a 'c' file
 	let g:std_to_ccls = g:stdc_version
+
+else
+	" Is not a 'c' file. Consider that it is a 'c++' file
+	let g:std_to_ccls = g:stdcpp_version
 endif
 
 let $STD_TO_CCLS=g:std_to_ccls
