@@ -3,7 +3,7 @@
 
 
 # Paths
-BSPC_FUNCTIONS_LIB=~/.local/dotfiles-lib/bspc_layout_functions
+BSPC_FUNCTIONS_LIB=~/.local/dotfiles_lib/bspc_layout_functions
 BSPC_LAYOUTS_PATH=~/.config/bspwm/layouts
 BSPC_LAYOUTS_VAR=~/.local/var/bspc_layout_var
 
