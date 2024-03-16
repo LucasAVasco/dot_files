@@ -1,43 +1,25 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+# To see the default '~/.profile' content, check the '/etc/skel/.profile' file.
+#
+# The bash does not read this file if the '~/.bash_profile' file exists. '~/.profile' needs to be sourced
+# from the '~/.bash_profile' if you want to use it.
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+# Custom paths added to PATH variable
+FOLDERS_TO_PATH="$HOME/.bin $HOME/.local/bin $HOME/.local/dotfiles_bin"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
+for folder in $FOLDERS_TO_PATH; do
+	if [ -d "$folder" ]; then
+		PATH="$folder:$PATH"
+	fi
+done
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+# Homebrew on Linux
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-if [ -d "$HOME/.local/dotfiles-bin" ]; then
-    PATH="$HOME/.local/dotfiles-bin:$PATH"
-fi
-
-# Change the 'DESKTOP_SESSION' enviroment variable to "gnome" if in bspwm
+# Configurations of BSPWM window manager
 if [ "$DESKTOP_SESSION" == "bspwm" ]; then
-	export DESKTOP_SESSION="GNOME"
-	export XDG_SESSION_DESKTOP="GNOME"
-	export XDG_CURRENT_DESKTOP="GNOME"
-fi
-
-# Add Homebrew
-if [ -d "/home/linuxbrew" ]; then
-	eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+	# Java aplication that use AWT (Abstract Window Toolkit) may not work properly in BSPWM (window becomes while).
+	# TRo disable the reparenting of the toolkit fix this problem.
+	export _JAVA_AWT_WM_NONREPARENTING=1
 fi

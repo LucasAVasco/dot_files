@@ -38,8 +38,8 @@
 /.config/coc/*
 !/.config/coc/ultisnips
 
-!/.local/dotfiles-bin
-!/.local/dotfiles-lib
+!/.local/dotfiles_bin
+!/.local/dotfiles_lib
 !/.local/share
 
 .local/share/*
@@ -76,6 +76,7 @@
 
 # Accept some archives
 !/.bashrc
+!/.bash_profile
 !/.tmux.conf
 !/.vimrc
 !/.gitignore
