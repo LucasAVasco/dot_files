@@ -10,7 +10,7 @@ source $HOME/.asdf/completions/asdf.bash
 export TERM=xterm-256color
 
 # Source Colorscheme
-source ~/.sub_modules/bash_prompts/colorschemes/basic.sh
+source ~/.sub_modules/bash_custom_prompts/colorschemes/basic.sh
 
 # Source Prompt
-source ~/.sub_modules/bash_prompts/prompts/basic.sh
+source ~/.sub_modules/bash_custom_prompts/prompts/basic.sh
