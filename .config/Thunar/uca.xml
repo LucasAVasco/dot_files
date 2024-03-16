@@ -2,13 +2,18 @@
 <actions>
 <action>
 	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
+	<name>Open Terminal Emulator Here</name>
 	<unique-id>1616366554260957-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
+	<command>exo-open --working-directory $(test -d %f &amp;&amp; echo %f || dirname %f) --launch TerminalEmulator</command>
+	<description>Open default terminal emulator</description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 <action>
 	<icon>gtk-directory</icon>
@@ -39,10 +44,10 @@
 </action>
 <action>
 	<icon>insert-link</icon>
-	<name>Create Web Link</name>
+	<name>Create Web Link launcher</name>
 	<unique-id>1618281811273630-2</unique-id>
 	<command>exo-desktop-item-edit --create-new --type Link %f</command>
-	<description>Create a new web link in this directory</description>
+	<description>Create a new web link laucher in this directory</description>
 	<patterns>*</patterns>
 	<directories/>
 </action>
@@ -51,9 +56,22 @@
 	<name>Create SymLink</name>
 	<unique-id>1620928505635389-1</unique-id>
 	<command>ln -Ts %f %n&quot; (symlink)&quot;</command>
-	<description>Create a symbolic link</description>
+	<description>Only on file or folder at a time</description>
 	<patterns>*</patterns>
 	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>link</icon>
+	<name>Create Hardlink</name>
+	<unique-id>1710624610882749-1</unique-id>
+	<command>ln %f %n&quot; (hardlink)&quot;</command>
+	<description>Only on file or folder at a time</description>
+	<patterns>*</patterns>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -104,7 +122,7 @@
 </action>
 <action>
 	<icon>data-information</icon>
-	<name>Remove metadata</name>
+	<name>Remove metadata (as possible)</name>
 	<unique-id>1688445336640407-1</unique-id>
 	<command>mat2 %F</command>
 	<description>Attempts to remove all metadata (some may remain)</description>
