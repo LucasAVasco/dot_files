@@ -17,6 +17,7 @@ gnome-keyring-daemon --start &
 kdeconnect-indicator &
 nm-applet &
 thunar --daemon &
+ibus-daemon --xim &
 
 # Screen Saver
 xss-lock -- ~/.local/dotfiles_bin/screenlocker &
