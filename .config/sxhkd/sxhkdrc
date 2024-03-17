@@ -97,13 +97,13 @@ super + F{1-9}
 super + s ; {x,y}
 	bspc node $(bspc query -N -d | sed -n '1p') -F {horizontal,vertical}
 
-# Focus mode
+# Without padding
 super + f
-	~/.config/bspwm/focus_padding.sh &
+	~/.config/bspwm/no_padding.sh &
 
-# Beautiful mode
+# Default padding
 super + b
-	~/.config/bspwm/beautiful_padding.sh &
+	~/.config/bspwm/padding.sh &
 
 # Close or open plank
 super + p

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Multiple nodes
-bspc config top_padding 31
+bspc config top_padding 31  # Remember to reserve some space to status bar
 bspc config right_padding 5
 bspc config bottom_padding 5
 bspc config left_padding 5
