@@ -4,7 +4,7 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Emulator Here</name>
 	<unique-id>1616366554260957-1</unique-id>
-	<command>exo-open --working-directory $(test -d %f &amp;&amp; echo %f || dirname %f) --launch TerminalEmulator</command>
+	<command>exo-open --working-directory &quot;$(test -d %f &amp;&amp; echo %f || dirname %f )&quot; --launch TerminalEmulator</command>
 	<description>Open default terminal emulator</description>
 	<patterns>*</patterns>
 	<startup-notify/>
