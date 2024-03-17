@@ -39,7 +39,6 @@
 !/.config/coc/ultisnips
 
 !/.local/dotfiles_bin
-!/.local/dotfiles_lib
 !/.local/share
 
 .local/share/*

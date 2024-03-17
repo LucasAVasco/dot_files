@@ -25,7 +25,7 @@ super + 4
 
 # Rofi bspc-layout
 super + 5
-	~/.config/rofi/layouts.sh &
+	~/.sub_modules/bspwm_custom_layouts/rofi/bspc_layouts_selector &
 
 # Thunar
 super + t
