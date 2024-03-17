@@ -73,6 +73,10 @@
 !/.config/Thunar/uca.xml
 
 
+# Mpv
+!/.config/mpv
+
+
 # Accept some archives
 !/.bashrc
 !/.bash_profile

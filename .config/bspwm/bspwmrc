@@ -19,7 +19,7 @@ nm-applet &
 thunar --daemon &
 
 # Screen Saver
-xss-lock -- ~/.config/bspwm/screenlocker/run.sh &
+xss-lock -- ~/.local/dotfiles_bin/screenlocker &
 ~/.config/bspwm/dpms.sh
 
 

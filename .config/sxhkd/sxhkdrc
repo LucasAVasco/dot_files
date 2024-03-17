@@ -119,7 +119,7 @@ super + e
 
 # Lock the screen
 ctrl + alt + l
-	~/.config/sxhkd/lockscreen.sh &
+	~/.local/dotfiles_bin/screenlocker
 
 # Quit and reboot bspwm
 super + shift + alt + {q,r}

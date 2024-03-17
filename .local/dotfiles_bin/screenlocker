@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# If your images or videos have black bands, add the 'panscan=1.0' line
+# to your '~/.config/mpv/mpv.conf' file.
+
+
+# Paths
+WALLPAPERS_PATH="$HOME/Themes/wallpapers-locker"
+
+
+# XSecureLock configurations and run
+export XSECURELOCK_COMPOSITE_OBSCURER=0
+export XSECURELOCK_SAVER=saver_mpv
+export XSECURELOCK_IMAGE_DURATION_SECONDS=4
+export XSECURELOCK_LIST_VIDEOS_COMMAND="find $WALLPAPERS_PATH -type f"
+
+xsecurelock &
+
+
+# vim: nobackup
