@@ -114,6 +114,18 @@ super + p
 	~/.config/plank/bspwm_plank/update.sh &
 
 
+########## Sound and Volume ############
+
+# Mute
+super + m
+	pactl set-sink-mute $(~/.config/sxhkd/get_audio_sink.sh) toggle
+
+super + alt + KP_Subtract
+	pactl set-sink-volume $(~/.config/sxhkd/get_audio_sink.sh) -5%
+
+super + alt + KP_Add
+	pactl set-sink-volume $(~/.config/sxhkd/get_audio_sink.sh) +5%
+
 
 ############## System ##################
 
