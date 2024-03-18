@@ -22,4 +22,8 @@ if [ "$DESKTOP_SESSION" == "bspwm" ]; then
 	# Java aplication that use AWT (Abstract Window Toolkit) may not work properly in BSPWM (window becomes while).
 	# TRo disable the reparenting of the toolkit fix this problem.
 	export _JAVA_AWT_WM_NONREPARENTING=1
+
+	export DESKTOP_SESSION="GNOME"
+	export XDG_SESSION_DESKTOP="GNOME"
+	export XDG_CURRENT_DESKTOP="GNOME"
 fi
