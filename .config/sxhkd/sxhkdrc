@@ -1,3 +1,7 @@
+# To query the X events used to define the keybindings, use: 'xev'
+# To reload sxhkd and apply the changes, use: 'pkill -USR1 -x sxhkd'
+
+
 ############ Applications ##############
 
 # Open the terminal
@@ -128,7 +132,3 @@ super + shift + alt + {q,r}
 # suspend, reboot and poweroff
 super + ctrl + alt + {s,r,q}
 	sudo systemctl {suspend,reboot,poweroff} &
-
-
-# Comments:
-# To reload sxhkd, use: pkill -USR1 -x sxhkd
