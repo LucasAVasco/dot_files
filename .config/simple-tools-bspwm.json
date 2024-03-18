@@ -1,0 +1,8 @@
+{
+	"desktop_dirs": [
+		"~/.Desktops",
+		"~/.DesktopsSync"
+	],
+
+	"screen_locker_command": "~/.local/dotfiles_bin/screenlocker"
+}

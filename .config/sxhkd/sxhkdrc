@@ -13,23 +13,23 @@ ctrl + alt + t
 
 # Rofi node options
 super + 1
-	~/.config/rofi/nodes.sh &
+	~/.sub_modules/simple_tools_for_bspwm/rofi/bin/bspc-nodes-rofi-gui &
 
 # Rofi windows
 super + 2
-	~/.config/rofi/windows.sh &
+	~/.sub_modules/simple_tools_for_bspwm/rofi/bin/windows-rofi-gui &
 
 # Rofi Applications
 super + 3
-	~/.config/rofi/applications.sh &
+	~/.sub_modules/simple_tools_for_bspwm/rofi/bin/applications-rofi-gui &
 
 # Rofi chdesk
 super + 4
-	~/.config/rofi/desktops.sh &
+	~/.sub_modules/simple_tools_for_bspwm/rofi/bin/chdesk-rofi-gui &
 
 # Rofi bspc-layout
 super + 5
-	~/.sub_modules/bspwm_custom_layouts/rofi/bspc_layouts_selector &
+	~/.sub_modules/simple_tools_for_bspwm/rofi/bin/bspc-layouts-rofi-gui &
 
 # Thunar
 super + t

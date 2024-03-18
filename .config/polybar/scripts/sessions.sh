@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-~/.config/rofi/session-manager.sh &
+~/.sub_modules/simple_tools_for_bspwm/rofi/bin/bspc-session-manager-rofi-gui &

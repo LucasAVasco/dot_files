@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-~/.config/rofi/layouts.sh &
+~/.sub_modules/simple_tools_for_bspwm/rofi/bin/bspc-layouts-rofi-gui &

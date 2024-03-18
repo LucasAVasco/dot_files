@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-~/.config/rofi/windows.sh &
+~/.sub_modules/simple_tools_for_bspwm/rofi/bin/windows-rofi-gui &
