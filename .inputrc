@@ -1,17 +1,21 @@
-# GDB keybinds
+# Keybinds used by readline. The \e is an escape key that maps the ESC or ALT key. So \es is ESC + s or ALT-s.
+#
+# The $if and $endif are used to enable and disable certain keybinds unique to an application.
+
+
 $if gdb
-	# INSERT
-	"\e[2~": "tui disable\n"
+	# ALT-d
+	"\ed": "tui disable\n"
 
-	# HOME
-	"\e[1~": "layout prev\n"
+	# ALT-p
+	"\ep": "layout prev\n"
 
-	# END
-	"\e[4~": "layout next\n"
+	# ALT-n
+	"\en": "layout next\n"
 
-	# F1, F2, F3, F4
-	"\eOP": "layout src\n"
-	"\eOQ": "layout asm\n"
-	"\eOR": "layout regs\n"
-	"\eOS": "layout split\n"
+	# Alt-s, Alt-a, Alt-r, Alt-w
+	"\es": "layout src\n"
+	"\ea": "layout asm\n"
+	"\er": "layout regs\n"
+	"\ew": "layout split\n"
 $endif
