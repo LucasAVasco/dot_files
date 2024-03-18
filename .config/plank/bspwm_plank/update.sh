@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Close or open plank
-pkill plank || plank -n bspwm_plank &
+pkill -x -f 'plank -n bspwm_plank' || plank -n bspwm_plank &
