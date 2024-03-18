@@ -7,7 +7,7 @@ set-theme --fix-cursor
 
 # Autoload
 sxhkd &
-compton --dbus &
+picom --experimental-backends --dbus &
 nitrogen --restore &
 pulseaudio --start &
 ~/.config/polybar/update.sh &
